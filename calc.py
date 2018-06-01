@@ -7,11 +7,12 @@
 tokens = (
     'NAME', 'NUMBER',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
-    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'IF', 'LACCO', 'RACCO')
+    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'IF', 'LACCO', 'RACCO',"ELSE")
 # Tokens
-t_LACCO = r"}"
-t_RACCO = r"{"
+t_LACCO = r"{"
+t_RACCO = r"}"
 t_IF = r'if'
+t_ELSE = r'else'
 t_EQUALITY = r'=='
 t_NON_EQUALITY = r'!='
 t_OR = r'&&'
@@ -23,10 +24,11 @@ t_DIVIDE = r'/'
 t_EQUALS = r'='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
+t_NAME = r'((?!(if))(?!(else))([a-zA-Z_][a-zA-Z0-9_]*))'
 t_SEMICOLON = ";"
 t_STRING = "'[^']*'"
 
+#t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
 
 def t_NUMBER(t):
     r'\d+'
@@ -72,12 +74,20 @@ def p_bloc(p):
     else:
         p[0] = ('bloc', p[1], 'empty')
     eval(p[0])
+def p_mini_bloc(p):
+    '''mbloc : LACCO mbloc RACCO
+    | LACCO statement RACCO'''
+    p[0] = p[2]
 
 
-def condition_statement(p):
-    '''statement : IF expression'''
+def p_IF_statement(p):
+    '''statement : IF expression mbloc ELSE mbloc
+    | IF expression mbloc '''
     print("tkt")
-
+    if eval(p[2])>0:
+        p[0] = p[3]
+    else:
+        p[0] = p[5]
 
 def p_statement_assign(p):
     '''statement : NAME EQUALS expression SEMICOLON'''
@@ -123,9 +133,12 @@ def eval(p):
     if p[0] == 'bloc':
         print(eval(p[1]))
         print(eval(p[2]))
-
-    elif p[0] == '+':
-        return p[1] + p[2]
+    if type(p[2]) is tuple:
+            p = (p[0], p[1], eval(p[2]))
+    if type(p[1]) is tuple:
+            p = (p[0], eval(p[1]), p[2])
+    if p[0] == '+':
+            return p[1] + p[2]
     elif p[0] == '-':
         return p[1] - p[2]
     elif p[0] == '*':
