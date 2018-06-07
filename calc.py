@@ -7,8 +7,9 @@
 tokens = (
     'NAME', 'NUMBER',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
-    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'IF', 'LACCO', 'RACCO',"ELSE")
+    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'IF', 'LACCO', 'RACCO',"ELSE", "WHILE")
 # Tokens
+t_WHILE = r"while"
 t_LACCO = r"{"
 t_RACCO = r"}"
 t_IF = r'if'
@@ -24,7 +25,7 @@ t_DIVIDE = r'/'
 t_EQUALS = r'='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_NAME = r'((?!(if))(?!(else))([a-zA-Z_][a-zA-Z0-9_]*))'
+t_NAME = r'((?!(if))(?!(else))(?!(while))([a-zA-Z_][a-zA-Z0-9_]*))'
 t_SEMICOLON = ";"
 t_STRING = "'[^']*'"
 
@@ -81,13 +82,19 @@ def p_mini_bloc(p):
 
 
 def p_IF_statement(p):
-    '''statement : IF expression mbloc ELSE mbloc
-    | IF expression mbloc '''
+    '''statement : IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    | IF LACCO expression RACCO  bloc '''
     print("tkt")
-    if eval(p[2])>0:
-        p[0] = p[3]
+    if len(p) == 4:
+        p[0] = (p[1],p[2],p[4])
     else:
-        p[0] = p[5]
+        p[0] = (p[1], p[2], p[4], p[8])
+
+    print(p[0])
+
+def p_WHILE_statement(p):
+    '''statement : WHILE expression bloc'''
+    p[0] = (p[1], p[2], p[3])
 
 def p_statement_assign(p):
     '''statement : NAME EQUALS expression SEMICOLON'''
@@ -128,38 +135,45 @@ def p_expression_binop(p):
 
 
 def eval(p):
-    if p == 'empty':
-        return
-    if p[0] == 'bloc':
-        print(eval(p[1]))
-        print(eval(p[2]))
-    if type(p[2]) is tuple:
-            p = (p[0], p[1], eval(p[2]))
-    if type(p[1]) is tuple:
-            p = (p[0], eval(p[1]), p[2])
-    if p[0] == '+':
-            return p[1] + p[2]
-    elif p[0] == '-':
-        return p[1] - p[2]
-    elif p[0] == '*':
-        return p[1] * p[2]
-    elif p[0] == '/':
-        return p[1] / p[2]
-    elif p[0] == '==':
-        return p[1] == p[2]
-    elif p[0] == '!=':
-        return p[1] != p[2]
-    elif p[0] == '=':
-        names[p[1]] = p[2]
-    elif p[0] == '||':
-        return p[1] or p[2]
-    elif p[0] == '&&':
-        return p[1] and p[2]
+
+    if p[0]== "if":
+        if (eval(p[1])):
+            eval(p[2])
+        elif len(p) ==4 :
+            eval(p[3])
+    else:
+        if p == 'empty':
+            return
+        if p[0] == 'bloc':
+            print(eval(p[1]))
+            print(eval(p[2]))
+        if type(p[2]) is tuple:
+                p = (p[0], p[1], eval(p[2]))
+        if type(p[1]) is tuple:
+                p = (p[0], eval(p[1]), p[2])
+        if p[0] == '+':
+                return p[1] + p[2]
+        elif p[0] == '-':
+            return p[1] - p[2]
+        elif p[0] == '*':
+            return p[1] * p[2]
+        elif p[0] == '/':
+            return p[1] / p[2]
+        elif p[0] == '==':
+            return p[1] == p[2]
+        elif p[0] == '!=':
+            return p[1] != p[2]
+        elif p[0] == '=':
+            names[p[1]] = p[2]
+        elif p[0] == '||':
+            return p[1] or p[2]
+        elif p[0] == '&&':
+            return p[1] and p[2]
 
 
 def p_expression_uminus(p):
-    'expression : MINUS expression %prec UMINUS'
-    p[0] = -p[2]
+        'expression : MINUS expression %prec UMINUS'
+        p[0] = -p[2]
 
 
 def p_expression_group(p):
@@ -194,9 +208,7 @@ import ply.yacc as yacc
 
 yacc.yacc()
 
-while True:
-    try:
-        s = input('calc > ')  # use input() on Python 3
-    except EOFError:
-        break
-    yacc.parse(s)
+with open("code.txt")as f:
+    s = f.read()  # use input() on Python 3
+
+yacc.parse(s)
