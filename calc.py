@@ -3,17 +3,18 @@
 #
 # p[1] simple calculator with variables.
 # -----------------------------------------------------------------------------
-
-tokens = (
+reserved = {
+   'if' : 'IF',
+   'else' : 'ELSE',
+   'while' : 'WHILE'
+}
+tokens = [
     'NAME', 'NUMBER',
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
-    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'IF', 'LACCO', 'RACCO',"ELSE", "WHILE")
+    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO', 'RACCO'] + list(reserved.values())
 # Tokens
-t_WHILE = r"while"
 t_LACCO = r"{"
 t_RACCO = r"}"
-t_IF = r'if'
-t_ELSE = r'else'
 t_EQUALITY = r'=='
 t_NON_EQUALITY = r'!='
 t_OR = r'&&'
@@ -25,11 +26,16 @@ t_DIVIDE = r'/'
 t_EQUALS = r'='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_NAME = r'((?!(if))(?!(else))(?!(while))([a-zA-Z_][a-zA-Z0-9_]*))'
+t_NAME = r'([a-zA-Z_][a-zA-Z0-9_]*)'
 t_SEMICOLON = ";"
 t_STRING = "'[^']*'"
 
 #t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
+
+def t_ID(t):
+    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    t.type = reserved.get(t.value,'ID')    # Check for reserved words
+    return t
 
 def t_NUMBER(t):
     r'\d+'
@@ -75,17 +81,13 @@ def p_bloc(p):
     else:
         p[0] = ('bloc', p[1], 'empty')
     eval(p[0])
-def p_mini_bloc(p):
-    '''mbloc : LACCO mbloc RACCO
-    | LACCO statement RACCO'''
-    p[0] = p[2]
 
 
 def p_IF_statement(p):
     '''statement : IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    | IF LACCO expression RACCO  bloc '''
+    | IF expression  LACCO bloc RACCO   '''
     print("tkt")
-    if len(p) == 4:
+    if len(p) == 6:
         p[0] = (p[1],p[2],p[4])
     else:
         p[0] = (p[1], p[2], p[4], p[8])
@@ -135,11 +137,13 @@ def p_expression_binop(p):
 
 
 def eval(p):
-
-    if p[0]== "if":
-        if (eval(p[1])):
+    if p[0] == "while":
+        while type(p[1]) is tuple and eval(p[1]) or p[1]:
             eval(p[2])
-        elif len(p) ==4 :
+    if p[0] == "if":
+        if type(p[1]) is tuple and eval(p[1]) or p[1] :
+            eval(p[2])
+        elif len(p) == 4:
             eval(p[3])
     else:
         if p == 'empty':
@@ -148,9 +152,9 @@ def eval(p):
             print(eval(p[1]))
             print(eval(p[2]))
         if type(p[2]) is tuple:
-                p = (p[0], p[1], eval(p[2]))
+            p = (p[0], p[1], eval(p[2]))
         if type(p[1]) is tuple:
-                p = (p[0], eval(p[1]), p[2])
+            p = (p[0], eval(p[1]), p[2])
         if p[0] == '+':
                 return p[1] + p[2]
         elif p[0] == '-':

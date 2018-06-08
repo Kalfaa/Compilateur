@@ -5,57 +5,54 @@ Grammar
 Rule 0     S' -> bloc
 Rule 1     bloc -> statement bloc
 Rule 2     bloc -> statement
-Rule 3     mbloc -> LACCO mbloc RACCO
-Rule 4     mbloc -> LACCO statement RACCO
-Rule 5     statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-Rule 6     statement -> IF LACCO expression RACCO bloc
-Rule 7     statement -> WHILE expression bloc
-Rule 8     statement -> NAME EQUALS expression SEMICOLON
-Rule 9     statement -> expression SEMICOLON
-Rule 10    expression -> expression PLUS expression
-Rule 11    expression -> expression MINUS expression
-Rule 12    expression -> expression TIMES expression
-Rule 13    expression -> expression DIVIDE expression
-Rule 14    expression -> expression EQUALITY expression
-Rule 15    expression -> expression NON_EQUALITY expression
-Rule 16    expression -> expression OR expression
-Rule 17    expression -> expression AND expression
-Rule 18    expression -> MINUS expression
-Rule 19    expression -> LPAREN expression RPAREN
-Rule 20    expression -> NUMBER
-Rule 21    expression -> STRING
-Rule 22    expression -> NAME
+Rule 3     statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+Rule 4     statement -> IF expression LACCO bloc RACCO
+Rule 5     statement -> WHILE expression bloc
+Rule 6     statement -> NAME EQUALS expression SEMICOLON
+Rule 7     statement -> expression SEMICOLON
+Rule 8     expression -> expression PLUS expression
+Rule 9     expression -> expression MINUS expression
+Rule 10    expression -> expression TIMES expression
+Rule 11    expression -> expression DIVIDE expression
+Rule 12    expression -> expression EQUALITY expression
+Rule 13    expression -> expression NON_EQUALITY expression
+Rule 14    expression -> expression OR expression
+Rule 15    expression -> expression AND expression
+Rule 16    expression -> MINUS expression
+Rule 17    expression -> LPAREN expression RPAREN
+Rule 18    expression -> NUMBER
+Rule 19    expression -> STRING
+Rule 20    expression -> NAME
 
 Terminals, with rules where they appear
 
-AND                  : 17
-DIVIDE               : 13
-ELSE                 : 5
-EQUALITY             : 14
-EQUALS               : 8
-IF                   : 5 6
-LACCO                : 3 4 5 5 6
-LPAREN               : 19
-MINUS                : 11 18
-NAME                 : 8 22
-NON_EQUALITY         : 15
-NUMBER               : 20
-OR                   : 16
-PLUS                 : 10
-RACCO                : 3 4 5 5 6
-RPAREN               : 19
-SEMICOLON            : 8 9
-STRING               : 21
-TIMES                : 12
-WHILE                : 7
+AND                  : 15
+DIVIDE               : 11
+ELSE                 : 3
+EQUALITY             : 12
+EQUALS               : 6
+IF                   : 3 4
+LACCO                : 3 3 4
+LPAREN               : 17
+MINUS                : 9 16
+NAME                 : 6 20
+NON_EQUALITY         : 13
+NUMBER               : 18
+OR                   : 14
+PLUS                 : 8
+RACCO                : 3 3 4
+RPAREN               : 17
+SEMICOLON            : 6 7
+STRING               : 19
+TIMES                : 10
+WHILE                : 5
 error                : 
 
 Nonterminals, with rules where they appear
 
-bloc                 : 1 5 5 6 7 0
-expression           : 5 6 7 8 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16 17 17 18 19
-mbloc                : 3
-statement            : 1 2 4
+bloc                 : 1 3 3 4 5 0
+expression           : 3 4 5 6 7 8 8 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 17
+statement            : 1 2
 
 Parsing method: LALR
 
@@ -64,180 +61,183 @@ state 0
     (0) S' -> . bloc
     (1) bloc -> . statement bloc
     (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (3) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> . IF expression LACCO bloc RACCO
+    (5) statement -> . WHILE expression bloc
+    (6) statement -> . NAME EQUALS expression SEMICOLON
+    (7) statement -> . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 4
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
 
+    bloc                           shift and go to state 5
     statement                      shift and go to state 8
-    bloc                           shift and go to state 7
-    expression                     shift and go to state 1
+    expression                     shift and go to state 10
 
 state 1
 
-    (9) statement -> expression . SEMICOLON
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (16) expression -> MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    SEMICOLON       shift and go to state 11
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
+    expression                     shift and go to state 12
 
 state 2
 
-    (7) statement -> WHILE . expression bloc
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (19) expression -> STRING .
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    PLUS            reduce using rule 19 (expression -> STRING .)
+    MINUS           reduce using rule 19 (expression -> STRING .)
+    TIMES           reduce using rule 19 (expression -> STRING .)
+    DIVIDE          reduce using rule 19 (expression -> STRING .)
+    EQUALITY        reduce using rule 19 (expression -> STRING .)
+    NON_EQUALITY    reduce using rule 19 (expression -> STRING .)
+    OR              reduce using rule 19 (expression -> STRING .)
+    AND             reduce using rule 19 (expression -> STRING .)
+    SEMICOLON       reduce using rule 19 (expression -> STRING .)
+    IF              reduce using rule 19 (expression -> STRING .)
+    WHILE           reduce using rule 19 (expression -> STRING .)
+    NAME            reduce using rule 19 (expression -> STRING .)
+    LPAREN          reduce using rule 19 (expression -> STRING .)
+    NUMBER          reduce using rule 19 (expression -> STRING .)
+    STRING          reduce using rule 19 (expression -> STRING .)
+    LACCO           reduce using rule 19 (expression -> STRING .)
+    RPAREN          reduce using rule 19 (expression -> STRING .)
 
-    expression                     shift and go to state 20
 
 state 3
 
-    (20) expression -> NUMBER .
+    (6) statement -> NAME . EQUALS expression SEMICOLON
+    (20) expression -> NAME .
 
-    PLUS            reduce using rule 20 (expression -> NUMBER .)
-    MINUS           reduce using rule 20 (expression -> NUMBER .)
-    TIMES           reduce using rule 20 (expression -> NUMBER .)
-    DIVIDE          reduce using rule 20 (expression -> NUMBER .)
-    EQUALITY        reduce using rule 20 (expression -> NUMBER .)
-    NON_EQUALITY    reduce using rule 20 (expression -> NUMBER .)
-    OR              reduce using rule 20 (expression -> NUMBER .)
-    AND             reduce using rule 20 (expression -> NUMBER .)
-    SEMICOLON       reduce using rule 20 (expression -> NUMBER .)
-    IF              reduce using rule 20 (expression -> NUMBER .)
-    WHILE           reduce using rule 20 (expression -> NUMBER .)
-    NAME            reduce using rule 20 (expression -> NUMBER .)
-    LPAREN          reduce using rule 20 (expression -> NUMBER .)
-    NUMBER          reduce using rule 20 (expression -> NUMBER .)
-    STRING          reduce using rule 20 (expression -> NUMBER .)
-    LACCO           reduce using rule 20 (expression -> NUMBER .)
-    RPAREN          reduce using rule 20 (expression -> NUMBER .)
-    RACCO           reduce using rule 20 (expression -> NUMBER .)
+    EQUALS          shift and go to state 13
+    SEMICOLON       reduce using rule 20 (expression -> NAME .)
+    PLUS            reduce using rule 20 (expression -> NAME .)
+    MINUS           reduce using rule 20 (expression -> NAME .)
+    TIMES           reduce using rule 20 (expression -> NAME .)
+    DIVIDE          reduce using rule 20 (expression -> NAME .)
+    EQUALITY        reduce using rule 20 (expression -> NAME .)
+    NON_EQUALITY    reduce using rule 20 (expression -> NAME .)
+    OR              reduce using rule 20 (expression -> NAME .)
+    AND             reduce using rule 20 (expression -> NAME .)
 
 
 state 4
 
-    (18) expression -> MINUS . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (5) statement -> WHILE . expression bloc
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
-    expression                     shift and go to state 22
+    expression                     shift and go to state 14
 
 state 5
-
-    (21) expression -> STRING .
-
-    PLUS            reduce using rule 21 (expression -> STRING .)
-    MINUS           reduce using rule 21 (expression -> STRING .)
-    TIMES           reduce using rule 21 (expression -> STRING .)
-    DIVIDE          reduce using rule 21 (expression -> STRING .)
-    EQUALITY        reduce using rule 21 (expression -> STRING .)
-    NON_EQUALITY    reduce using rule 21 (expression -> STRING .)
-    OR              reduce using rule 21 (expression -> STRING .)
-    AND             reduce using rule 21 (expression -> STRING .)
-    SEMICOLON       reduce using rule 21 (expression -> STRING .)
-    IF              reduce using rule 21 (expression -> STRING .)
-    WHILE           reduce using rule 21 (expression -> STRING .)
-    NAME            reduce using rule 21 (expression -> STRING .)
-    LPAREN          reduce using rule 21 (expression -> STRING .)
-    NUMBER          reduce using rule 21 (expression -> STRING .)
-    STRING          reduce using rule 21 (expression -> STRING .)
-    LACCO           reduce using rule 21 (expression -> STRING .)
-    RPAREN          reduce using rule 21 (expression -> STRING .)
-    RACCO           reduce using rule 21 (expression -> STRING .)
-
-
-state 6
-
-    (8) statement -> NAME . EQUALS expression SEMICOLON
-    (22) expression -> NAME .
-
-    EQUALS          shift and go to state 23
-    SEMICOLON       reduce using rule 22 (expression -> NAME .)
-    PLUS            reduce using rule 22 (expression -> NAME .)
-    MINUS           reduce using rule 22 (expression -> NAME .)
-    TIMES           reduce using rule 22 (expression -> NAME .)
-    DIVIDE          reduce using rule 22 (expression -> NAME .)
-    EQUALITY        reduce using rule 22 (expression -> NAME .)
-    NON_EQUALITY    reduce using rule 22 (expression -> NAME .)
-    OR              reduce using rule 22 (expression -> NAME .)
-    AND             reduce using rule 22 (expression -> NAME .)
-
-
-state 7
 
     (0) S' -> bloc .
 
 
+
+state 6
+
+    (3) statement -> IF . expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> IF . expression LACCO bloc RACCO
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 15
+
+state 7
+
+    (17) expression -> LPAREN . expression RPAREN
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 16
 
 state 8
 
@@ -245,24 +245,24 @@ state 8
     (2) bloc -> statement .
     (1) bloc -> . statement bloc
     (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (3) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> . IF expression LACCO bloc RACCO
+    (5) statement -> . WHILE expression bloc
+    (6) statement -> . NAME EQUALS expression SEMICOLON
+    (7) statement -> . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
   ! shift/reduce conflict for IF resolved as shift
   ! shift/reduce conflict for WHILE resolved as shift
@@ -273,13 +273,13 @@ state 8
   ! shift/reduce conflict for STRING resolved as shift
     $end            reduce using rule 2 (bloc -> statement .)
     RACCO           reduce using rule 2 (bloc -> statement .)
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 4
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
 
   ! IF              [ reduce using rule 2 (bloc -> statement .) ]
   ! WHILE           [ reduce using rule 2 (bloc -> statement .) ]
@@ -289,419 +289,243 @@ state 8
   ! NUMBER          [ reduce using rule 2 (bloc -> statement .) ]
   ! STRING          [ reduce using rule 2 (bloc -> statement .) ]
 
+    bloc                           shift and go to state 17
     statement                      shift and go to state 8
-    bloc                           shift and go to state 24
-    expression                     shift and go to state 1
+    expression                     shift and go to state 10
 
 state 9
 
-    (5) statement -> IF . expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> IF . LACCO expression RACCO bloc
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (18) expression -> NUMBER .
 
-    LACCO           shift and go to state 26
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    PLUS            reduce using rule 18 (expression -> NUMBER .)
+    MINUS           reduce using rule 18 (expression -> NUMBER .)
+    TIMES           reduce using rule 18 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 18 (expression -> NUMBER .)
+    EQUALITY        reduce using rule 18 (expression -> NUMBER .)
+    NON_EQUALITY    reduce using rule 18 (expression -> NUMBER .)
+    OR              reduce using rule 18 (expression -> NUMBER .)
+    AND             reduce using rule 18 (expression -> NUMBER .)
+    SEMICOLON       reduce using rule 18 (expression -> NUMBER .)
+    IF              reduce using rule 18 (expression -> NUMBER .)
+    WHILE           reduce using rule 18 (expression -> NUMBER .)
+    NAME            reduce using rule 18 (expression -> NUMBER .)
+    LPAREN          reduce using rule 18 (expression -> NUMBER .)
+    NUMBER          reduce using rule 18 (expression -> NUMBER .)
+    STRING          reduce using rule 18 (expression -> NUMBER .)
+    LACCO           reduce using rule 18 (expression -> NUMBER .)
+    RPAREN          reduce using rule 18 (expression -> NUMBER .)
 
-    expression                     shift and go to state 25
 
 state 10
 
-    (19) expression -> LPAREN . expression RPAREN
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (7) statement -> expression . SEMICOLON
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    SEMICOLON       shift and go to state 21
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-    expression                     shift and go to state 27
 
 state 11
 
-    (9) statement -> expression SEMICOLON .
+    (20) expression -> NAME .
 
-    IF              reduce using rule 9 (statement -> expression SEMICOLON .)
-    WHILE           reduce using rule 9 (statement -> expression SEMICOLON .)
-    NAME            reduce using rule 9 (statement -> expression SEMICOLON .)
-    MINUS           reduce using rule 9 (statement -> expression SEMICOLON .)
-    LPAREN          reduce using rule 9 (statement -> expression SEMICOLON .)
-    NUMBER          reduce using rule 9 (statement -> expression SEMICOLON .)
-    STRING          reduce using rule 9 (statement -> expression SEMICOLON .)
-    RACCO           reduce using rule 9 (statement -> expression SEMICOLON .)
-    $end            reduce using rule 9 (statement -> expression SEMICOLON .)
+    PLUS            reduce using rule 20 (expression -> NAME .)
+    MINUS           reduce using rule 20 (expression -> NAME .)
+    TIMES           reduce using rule 20 (expression -> NAME .)
+    DIVIDE          reduce using rule 20 (expression -> NAME .)
+    EQUALITY        reduce using rule 20 (expression -> NAME .)
+    NON_EQUALITY    reduce using rule 20 (expression -> NAME .)
+    OR              reduce using rule 20 (expression -> NAME .)
+    AND             reduce using rule 20 (expression -> NAME .)
+    SEMICOLON       reduce using rule 20 (expression -> NAME .)
+    IF              reduce using rule 20 (expression -> NAME .)
+    WHILE           reduce using rule 20 (expression -> NAME .)
+    NAME            reduce using rule 20 (expression -> NAME .)
+    LPAREN          reduce using rule 20 (expression -> NAME .)
+    NUMBER          reduce using rule 20 (expression -> NAME .)
+    STRING          reduce using rule 20 (expression -> NAME .)
+    LACCO           reduce using rule 20 (expression -> NAME .)
+    RPAREN          reduce using rule 20 (expression -> NAME .)
 
 
 state 12
 
-    (14) expression -> expression EQUALITY . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (16) expression -> MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    PLUS            reduce using rule 16 (expression -> MINUS expression .)
+    MINUS           reduce using rule 16 (expression -> MINUS expression .)
+    TIMES           reduce using rule 16 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 16 (expression -> MINUS expression .)
+    EQUALITY        reduce using rule 16 (expression -> MINUS expression .)
+    NON_EQUALITY    reduce using rule 16 (expression -> MINUS expression .)
+    OR              reduce using rule 16 (expression -> MINUS expression .)
+    AND             reduce using rule 16 (expression -> MINUS expression .)
+    SEMICOLON       reduce using rule 16 (expression -> MINUS expression .)
+    IF              reduce using rule 16 (expression -> MINUS expression .)
+    WHILE           reduce using rule 16 (expression -> MINUS expression .)
+    NAME            reduce using rule 16 (expression -> MINUS expression .)
+    LPAREN          reduce using rule 16 (expression -> MINUS expression .)
+    NUMBER          reduce using rule 16 (expression -> MINUS expression .)
+    STRING          reduce using rule 16 (expression -> MINUS expression .)
+    LACCO           reduce using rule 16 (expression -> MINUS expression .)
+    RPAREN          reduce using rule 16 (expression -> MINUS expression .)
 
-    expression                     shift and go to state 28
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 24 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
+
 
 state 13
 
-    (13) expression -> expression DIVIDE . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (6) statement -> NAME EQUALS . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
-    expression                     shift and go to state 29
+    expression                     shift and go to state 27
 
 state 14
 
-    (12) expression -> expression TIMES . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (5) statement -> WHILE expression . bloc
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
+    (1) bloc -> . statement bloc
+    (2) bloc -> . statement
+    (3) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> . IF expression LACCO bloc RACCO
+    (5) statement -> . WHILE expression bloc
+    (6) statement -> . NAME EQUALS expression SEMICOLON
+    (7) statement -> . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
+    IF              shift and go to state 6
+    WHILE           shift and go to state 4
+    NAME            shift and go to state 3
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
 
-    expression                     shift and go to state 30
+    bloc                           shift and go to state 29
+    statement                      shift and go to state 8
+    expression                     shift and go to state 10
 
 state 15
 
-    (15) expression -> expression NON_EQUALITY . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (3) statement -> IF expression . LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> IF expression . LACCO bloc RACCO
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    LACCO           shift and go to state 30
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-    expression                     shift and go to state 31
 
 state 16
 
-    (10) expression -> expression PLUS . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (17) expression -> LPAREN expression . RPAREN
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    RPAREN          shift and go to state 31
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-    expression                     shift and go to state 32
 
 state 17
-
-    (16) expression -> expression OR . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
-
-    expression                     shift and go to state 33
-
-state 18
-
-    (11) expression -> expression MINUS . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
-
-    expression                     shift and go to state 34
-
-state 19
-
-    (17) expression -> expression AND . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
-
-    expression                     shift and go to state 35
-
-state 20
-
-    (7) statement -> WHILE expression . bloc
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
-    (1) bloc -> . statement bloc
-    (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 36
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-
-    expression                     shift and go to state 1
-    bloc                           shift and go to state 37
-    statement                      shift and go to state 8
-
-state 21
-
-    (22) expression -> NAME .
-
-    PLUS            reduce using rule 22 (expression -> NAME .)
-    MINUS           reduce using rule 22 (expression -> NAME .)
-    TIMES           reduce using rule 22 (expression -> NAME .)
-    DIVIDE          reduce using rule 22 (expression -> NAME .)
-    EQUALITY        reduce using rule 22 (expression -> NAME .)
-    NON_EQUALITY    reduce using rule 22 (expression -> NAME .)
-    OR              reduce using rule 22 (expression -> NAME .)
-    AND             reduce using rule 22 (expression -> NAME .)
-    SEMICOLON       reduce using rule 22 (expression -> NAME .)
-    IF              reduce using rule 22 (expression -> NAME .)
-    WHILE           reduce using rule 22 (expression -> NAME .)
-    NAME            reduce using rule 22 (expression -> NAME .)
-    LPAREN          reduce using rule 22 (expression -> NAME .)
-    NUMBER          reduce using rule 22 (expression -> NAME .)
-    STRING          reduce using rule 22 (expression -> NAME .)
-    LACCO           reduce using rule 22 (expression -> NAME .)
-    RPAREN          reduce using rule 22 (expression -> NAME .)
-    RACCO           reduce using rule 22 (expression -> NAME .)
-
-
-state 22
-
-    (18) expression -> MINUS expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
-
-    PLUS            reduce using rule 18 (expression -> MINUS expression .)
-    MINUS           reduce using rule 18 (expression -> MINUS expression .)
-    TIMES           reduce using rule 18 (expression -> MINUS expression .)
-    DIVIDE          reduce using rule 18 (expression -> MINUS expression .)
-    EQUALITY        reduce using rule 18 (expression -> MINUS expression .)
-    NON_EQUALITY    reduce using rule 18 (expression -> MINUS expression .)
-    OR              reduce using rule 18 (expression -> MINUS expression .)
-    AND             reduce using rule 18 (expression -> MINUS expression .)
-    SEMICOLON       reduce using rule 18 (expression -> MINUS expression .)
-    IF              reduce using rule 18 (expression -> MINUS expression .)
-    WHILE           reduce using rule 18 (expression -> MINUS expression .)
-    NAME            reduce using rule 18 (expression -> MINUS expression .)
-    LPAREN          reduce using rule 18 (expression -> MINUS expression .)
-    NUMBER          reduce using rule 18 (expression -> MINUS expression .)
-    STRING          reduce using rule 18 (expression -> MINUS expression .)
-    LACCO           reduce using rule 18 (expression -> MINUS expression .)
-    RPAREN          reduce using rule 18 (expression -> MINUS expression .)
-    RACCO           reduce using rule 18 (expression -> MINUS expression .)
-
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! TIMES           [ shift and go to state 14 ]
-  ! DIVIDE          [ shift and go to state 13 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
-
-
-state 23
-
-    (8) statement -> NAME EQUALS . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
-
-    expression                     shift and go to state 38
-
-state 24
 
     (1) bloc -> statement bloc .
 
@@ -716,309 +540,396 @@ state 24
     RACCO           reduce using rule 1 (bloc -> statement bloc .)
 
 
+state 18
+
+    (10) expression -> expression TIMES . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 32
+
+state 19
+
+    (13) expression -> expression NON_EQUALITY . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 33
+
+state 20
+
+    (8) expression -> expression PLUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 34
+
+state 21
+
+    (7) statement -> expression SEMICOLON .
+
+    $end            reduce using rule 7 (statement -> expression SEMICOLON .)
+    IF              reduce using rule 7 (statement -> expression SEMICOLON .)
+    WHILE           reduce using rule 7 (statement -> expression SEMICOLON .)
+    NAME            reduce using rule 7 (statement -> expression SEMICOLON .)
+    MINUS           reduce using rule 7 (statement -> expression SEMICOLON .)
+    LPAREN          reduce using rule 7 (statement -> expression SEMICOLON .)
+    NUMBER          reduce using rule 7 (statement -> expression SEMICOLON .)
+    STRING          reduce using rule 7 (statement -> expression SEMICOLON .)
+    RACCO           reduce using rule 7 (statement -> expression SEMICOLON .)
+
+
+state 22
+
+    (15) expression -> expression AND . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 35
+
+state 23
+
+    (14) expression -> expression OR . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 36
+
+state 24
+
+    (11) expression -> expression DIVIDE . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
+
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
+
+    expression                     shift and go to state 37
+
 state 25
 
-    (5) statement -> IF expression . LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (9) expression -> expression MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    LACCO           shift and go to state 39
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
+    expression                     shift and go to state 38
 
 state 26
 
-    (6) statement -> IF LACCO . expression RACCO bloc
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (12) expression -> expression EQUALITY . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
-    expression                     shift and go to state 40
+    expression                     shift and go to state 39
 
 state 27
 
-    (19) expression -> LPAREN expression . RPAREN
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (6) statement -> NAME EQUALS expression . SEMICOLON
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    RPAREN          shift and go to state 41
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    SEMICOLON       shift and go to state 40
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
 
 state 28
 
-    (14) expression -> expression EQUALITY expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (9) expression -> expression MINUS . expression
+    (16) expression -> MINUS . expression
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for EQUALITY resolved as shift
-  ! shift/reduce conflict for NON_EQUALITY resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-    SEMICOLON       reduce using rule 14 (expression -> expression EQUALITY expression .)
-    IF              reduce using rule 14 (expression -> expression EQUALITY expression .)
-    WHILE           reduce using rule 14 (expression -> expression EQUALITY expression .)
-    NAME            reduce using rule 14 (expression -> expression EQUALITY expression .)
-    LPAREN          reduce using rule 14 (expression -> expression EQUALITY expression .)
-    NUMBER          reduce using rule 14 (expression -> expression EQUALITY expression .)
-    STRING          reduce using rule 14 (expression -> expression EQUALITY expression .)
-    LACCO           reduce using rule 14 (expression -> expression EQUALITY expression .)
-    RPAREN          reduce using rule 14 (expression -> expression EQUALITY expression .)
-    RACCO           reduce using rule 14 (expression -> expression EQUALITY expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
+    NAME            shift and go to state 11
 
-  ! PLUS            [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! MINUS           [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! TIMES           [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! DIVIDE          [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! EQUALITY        [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! NON_EQUALITY    [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! OR              [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-  ! AND             [ reduce using rule 14 (expression -> expression EQUALITY expression .) ]
-
+    expression                     shift and go to state 41
 
 state 29
 
-    (13) expression -> expression DIVIDE expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (5) statement -> WHILE expression bloc .
 
-    PLUS            reduce using rule 13 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 13 (expression -> expression DIVIDE expression .)
-    TIMES           reduce using rule 13 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 13 (expression -> expression DIVIDE expression .)
-    EQUALITY        reduce using rule 13 (expression -> expression DIVIDE expression .)
-    NON_EQUALITY    reduce using rule 13 (expression -> expression DIVIDE expression .)
-    OR              reduce using rule 13 (expression -> expression DIVIDE expression .)
-    AND             reduce using rule 13 (expression -> expression DIVIDE expression .)
-    SEMICOLON       reduce using rule 13 (expression -> expression DIVIDE expression .)
-    IF              reduce using rule 13 (expression -> expression DIVIDE expression .)
-    WHILE           reduce using rule 13 (expression -> expression DIVIDE expression .)
-    NAME            reduce using rule 13 (expression -> expression DIVIDE expression .)
-    LPAREN          reduce using rule 13 (expression -> expression DIVIDE expression .)
-    NUMBER          reduce using rule 13 (expression -> expression DIVIDE expression .)
-    STRING          reduce using rule 13 (expression -> expression DIVIDE expression .)
-    LACCO           reduce using rule 13 (expression -> expression DIVIDE expression .)
-    RPAREN          reduce using rule 13 (expression -> expression DIVIDE expression .)
-    RACCO           reduce using rule 13 (expression -> expression DIVIDE expression .)
-
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! TIMES           [ shift and go to state 14 ]
-  ! DIVIDE          [ shift and go to state 13 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
+    $end            reduce using rule 5 (statement -> WHILE expression bloc .)
+    IF              reduce using rule 5 (statement -> WHILE expression bloc .)
+    WHILE           reduce using rule 5 (statement -> WHILE expression bloc .)
+    NAME            reduce using rule 5 (statement -> WHILE expression bloc .)
+    MINUS           reduce using rule 5 (statement -> WHILE expression bloc .)
+    LPAREN          reduce using rule 5 (statement -> WHILE expression bloc .)
+    NUMBER          reduce using rule 5 (statement -> WHILE expression bloc .)
+    STRING          reduce using rule 5 (statement -> WHILE expression bloc .)
+    RACCO           reduce using rule 5 (statement -> WHILE expression bloc .)
 
 
 state 30
 
-    (12) expression -> expression TIMES expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (3) statement -> IF expression LACCO . bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> IF expression LACCO . bloc RACCO
+    (1) bloc -> . statement bloc
+    (2) bloc -> . statement
+    (3) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> . IF expression LACCO bloc RACCO
+    (5) statement -> . WHILE expression bloc
+    (6) statement -> . NAME EQUALS expression SEMICOLON
+    (7) statement -> . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    PLUS            reduce using rule 12 (expression -> expression TIMES expression .)
-    MINUS           reduce using rule 12 (expression -> expression TIMES expression .)
-    TIMES           reduce using rule 12 (expression -> expression TIMES expression .)
-    DIVIDE          reduce using rule 12 (expression -> expression TIMES expression .)
-    EQUALITY        reduce using rule 12 (expression -> expression TIMES expression .)
-    NON_EQUALITY    reduce using rule 12 (expression -> expression TIMES expression .)
-    OR              reduce using rule 12 (expression -> expression TIMES expression .)
-    AND             reduce using rule 12 (expression -> expression TIMES expression .)
-    SEMICOLON       reduce using rule 12 (expression -> expression TIMES expression .)
-    IF              reduce using rule 12 (expression -> expression TIMES expression .)
-    WHILE           reduce using rule 12 (expression -> expression TIMES expression .)
-    NAME            reduce using rule 12 (expression -> expression TIMES expression .)
-    LPAREN          reduce using rule 12 (expression -> expression TIMES expression .)
-    NUMBER          reduce using rule 12 (expression -> expression TIMES expression .)
-    STRING          reduce using rule 12 (expression -> expression TIMES expression .)
-    LACCO           reduce using rule 12 (expression -> expression TIMES expression .)
-    RPAREN          reduce using rule 12 (expression -> expression TIMES expression .)
-    RACCO           reduce using rule 12 (expression -> expression TIMES expression .)
+    IF              shift and go to state 6
+    WHILE           shift and go to state 4
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
 
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! TIMES           [ shift and go to state 14 ]
-  ! DIVIDE          [ shift and go to state 13 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
-
+    bloc                           shift and go to state 42
+    statement                      shift and go to state 8
+    expression                     shift and go to state 10
 
 state 31
 
-    (15) expression -> expression NON_EQUALITY expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (17) expression -> LPAREN expression RPAREN .
 
-  ! shift/reduce conflict for PLUS resolved as shift
-  ! shift/reduce conflict for MINUS resolved as shift
-  ! shift/reduce conflict for TIMES resolved as shift
-  ! shift/reduce conflict for DIVIDE resolved as shift
-  ! shift/reduce conflict for EQUALITY resolved as shift
-  ! shift/reduce conflict for NON_EQUALITY resolved as shift
-  ! shift/reduce conflict for OR resolved as shift
-  ! shift/reduce conflict for AND resolved as shift
-    SEMICOLON       reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    IF              reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    WHILE           reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    NAME            reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    LPAREN          reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    NUMBER          reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    STRING          reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    LACCO           reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    RPAREN          reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    RACCO           reduce using rule 15 (expression -> expression NON_EQUALITY expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
-
-  ! PLUS            [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! MINUS           [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! TIMES           [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! DIVIDE          [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! EQUALITY        [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! NON_EQUALITY    [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! OR              [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
-  ! AND             [ reduce using rule 15 (expression -> expression NON_EQUALITY expression .) ]
+    PLUS            reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    EQUALITY        reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    NON_EQUALITY    reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    OR              reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    AND             reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    IF              reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    WHILE           reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    NAME            reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    NUMBER          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    STRING          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    LACCO           reduce using rule 17 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 17 (expression -> LPAREN expression RPAREN .)
 
 
 state 32
 
-    (10) expression -> expression PLUS expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (10) expression -> expression TIMES expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    PLUS            reduce using rule 10 (expression -> expression PLUS expression .)
-    MINUS           reduce using rule 10 (expression -> expression PLUS expression .)
-    EQUALITY        reduce using rule 10 (expression -> expression PLUS expression .)
-    NON_EQUALITY    reduce using rule 10 (expression -> expression PLUS expression .)
-    OR              reduce using rule 10 (expression -> expression PLUS expression .)
-    AND             reduce using rule 10 (expression -> expression PLUS expression .)
-    SEMICOLON       reduce using rule 10 (expression -> expression PLUS expression .)
-    IF              reduce using rule 10 (expression -> expression PLUS expression .)
-    WHILE           reduce using rule 10 (expression -> expression PLUS expression .)
-    NAME            reduce using rule 10 (expression -> expression PLUS expression .)
-    LPAREN          reduce using rule 10 (expression -> expression PLUS expression .)
-    NUMBER          reduce using rule 10 (expression -> expression PLUS expression .)
-    STRING          reduce using rule 10 (expression -> expression PLUS expression .)
-    LACCO           reduce using rule 10 (expression -> expression PLUS expression .)
-    RPAREN          reduce using rule 10 (expression -> expression PLUS expression .)
-    RACCO           reduce using rule 10 (expression -> expression PLUS expression .)
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
+    PLUS            reduce using rule 10 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 10 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 10 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 10 (expression -> expression TIMES expression .)
+    EQUALITY        reduce using rule 10 (expression -> expression TIMES expression .)
+    NON_EQUALITY    reduce using rule 10 (expression -> expression TIMES expression .)
+    OR              reduce using rule 10 (expression -> expression TIMES expression .)
+    AND             reduce using rule 10 (expression -> expression TIMES expression .)
+    SEMICOLON       reduce using rule 10 (expression -> expression TIMES expression .)
+    IF              reduce using rule 10 (expression -> expression TIMES expression .)
+    WHILE           reduce using rule 10 (expression -> expression TIMES expression .)
+    NAME            reduce using rule 10 (expression -> expression TIMES expression .)
+    LPAREN          reduce using rule 10 (expression -> expression TIMES expression .)
+    NUMBER          reduce using rule 10 (expression -> expression TIMES expression .)
+    STRING          reduce using rule 10 (expression -> expression TIMES expression .)
+    LACCO           reduce using rule 10 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 10 (expression -> expression TIMES expression .)
 
-  ! TIMES           [ reduce using rule 10 (expression -> expression PLUS expression .) ]
-  ! DIVIDE          [ reduce using rule 10 (expression -> expression PLUS expression .) ]
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 24 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
 
 
 state 33
 
-    (16) expression -> expression OR expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (13) expression -> expression NON_EQUALITY expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
   ! shift/reduce conflict for PLUS resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
@@ -1028,87 +939,85 @@ state 33
   ! shift/reduce conflict for NON_EQUALITY resolved as shift
   ! shift/reduce conflict for OR resolved as shift
   ! shift/reduce conflict for AND resolved as shift
-    SEMICOLON       reduce using rule 16 (expression -> expression OR expression .)
-    IF              reduce using rule 16 (expression -> expression OR expression .)
-    WHILE           reduce using rule 16 (expression -> expression OR expression .)
-    NAME            reduce using rule 16 (expression -> expression OR expression .)
-    LPAREN          reduce using rule 16 (expression -> expression OR expression .)
-    NUMBER          reduce using rule 16 (expression -> expression OR expression .)
-    STRING          reduce using rule 16 (expression -> expression OR expression .)
-    LACCO           reduce using rule 16 (expression -> expression OR expression .)
-    RPAREN          reduce using rule 16 (expression -> expression OR expression .)
-    RACCO           reduce using rule 16 (expression -> expression OR expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    SEMICOLON       reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    IF              reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    WHILE           reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    NAME            reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    LPAREN          reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    NUMBER          reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    STRING          reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    LACCO           reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    RPAREN          reduce using rule 13 (expression -> expression NON_EQUALITY expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-  ! PLUS            [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! MINUS           [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! TIMES           [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! DIVIDE          [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! EQUALITY        [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! NON_EQUALITY    [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! OR              [ reduce using rule 16 (expression -> expression OR expression .) ]
-  ! AND             [ reduce using rule 16 (expression -> expression OR expression .) ]
+  ! PLUS            [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! MINUS           [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! TIMES           [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! DIVIDE          [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! EQUALITY        [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! NON_EQUALITY    [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! OR              [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
+  ! AND             [ reduce using rule 13 (expression -> expression NON_EQUALITY expression .) ]
 
 
 state 34
 
-    (11) expression -> expression MINUS expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (8) expression -> expression PLUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    PLUS            reduce using rule 11 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 11 (expression -> expression MINUS expression .)
-    EQUALITY        reduce using rule 11 (expression -> expression MINUS expression .)
-    NON_EQUALITY    reduce using rule 11 (expression -> expression MINUS expression .)
-    OR              reduce using rule 11 (expression -> expression MINUS expression .)
-    AND             reduce using rule 11 (expression -> expression MINUS expression .)
-    SEMICOLON       reduce using rule 11 (expression -> expression MINUS expression .)
-    IF              reduce using rule 11 (expression -> expression MINUS expression .)
-    WHILE           reduce using rule 11 (expression -> expression MINUS expression .)
-    NAME            reduce using rule 11 (expression -> expression MINUS expression .)
-    LPAREN          reduce using rule 11 (expression -> expression MINUS expression .)
-    NUMBER          reduce using rule 11 (expression -> expression MINUS expression .)
-    STRING          reduce using rule 11 (expression -> expression MINUS expression .)
-    LACCO           reduce using rule 11 (expression -> expression MINUS expression .)
-    RPAREN          reduce using rule 11 (expression -> expression MINUS expression .)
-    RACCO           reduce using rule 11 (expression -> expression MINUS expression .)
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
+    PLUS            reduce using rule 8 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 8 (expression -> expression PLUS expression .)
+    EQUALITY        reduce using rule 8 (expression -> expression PLUS expression .)
+    NON_EQUALITY    reduce using rule 8 (expression -> expression PLUS expression .)
+    OR              reduce using rule 8 (expression -> expression PLUS expression .)
+    AND             reduce using rule 8 (expression -> expression PLUS expression .)
+    SEMICOLON       reduce using rule 8 (expression -> expression PLUS expression .)
+    IF              reduce using rule 8 (expression -> expression PLUS expression .)
+    WHILE           reduce using rule 8 (expression -> expression PLUS expression .)
+    NAME            reduce using rule 8 (expression -> expression PLUS expression .)
+    LPAREN          reduce using rule 8 (expression -> expression PLUS expression .)
+    NUMBER          reduce using rule 8 (expression -> expression PLUS expression .)
+    STRING          reduce using rule 8 (expression -> expression PLUS expression .)
+    LACCO           reduce using rule 8 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 8 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
 
-  ! TIMES           [ reduce using rule 11 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 11 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
+  ! TIMES           [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 8 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
 
 
 state 35
 
-    (17) expression -> expression AND expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (15) expression -> expression AND expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
   ! shift/reduce conflict for PLUS resolved as shift
   ! shift/reduce conflict for MINUS resolved as shift
@@ -1118,380 +1027,368 @@ state 35
   ! shift/reduce conflict for NON_EQUALITY resolved as shift
   ! shift/reduce conflict for OR resolved as shift
   ! shift/reduce conflict for AND resolved as shift
-    SEMICOLON       reduce using rule 17 (expression -> expression AND expression .)
-    IF              reduce using rule 17 (expression -> expression AND expression .)
-    WHILE           reduce using rule 17 (expression -> expression AND expression .)
-    NAME            reduce using rule 17 (expression -> expression AND expression .)
-    LPAREN          reduce using rule 17 (expression -> expression AND expression .)
-    NUMBER          reduce using rule 17 (expression -> expression AND expression .)
-    STRING          reduce using rule 17 (expression -> expression AND expression .)
-    LACCO           reduce using rule 17 (expression -> expression AND expression .)
-    RPAREN          reduce using rule 17 (expression -> expression AND expression .)
-    RACCO           reduce using rule 17 (expression -> expression AND expression .)
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    SEMICOLON       reduce using rule 15 (expression -> expression AND expression .)
+    IF              reduce using rule 15 (expression -> expression AND expression .)
+    WHILE           reduce using rule 15 (expression -> expression AND expression .)
+    NAME            reduce using rule 15 (expression -> expression AND expression .)
+    LPAREN          reduce using rule 15 (expression -> expression AND expression .)
+    NUMBER          reduce using rule 15 (expression -> expression AND expression .)
+    STRING          reduce using rule 15 (expression -> expression AND expression .)
+    LACCO           reduce using rule 15 (expression -> expression AND expression .)
+    RPAREN          reduce using rule 15 (expression -> expression AND expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-  ! PLUS            [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! MINUS           [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! TIMES           [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! DIVIDE          [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! EQUALITY        [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! NON_EQUALITY    [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! OR              [ reduce using rule 17 (expression -> expression AND expression .) ]
-  ! AND             [ reduce using rule 17 (expression -> expression AND expression .) ]
+  ! PLUS            [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! MINUS           [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! TIMES           [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! DIVIDE          [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! EQUALITY        [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! NON_EQUALITY    [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! OR              [ reduce using rule 15 (expression -> expression AND expression .) ]
+  ! AND             [ reduce using rule 15 (expression -> expression AND expression .) ]
 
 
 state 36
 
-    (11) expression -> expression MINUS . expression
-    (18) expression -> MINUS . expression
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (14) expression -> expression OR expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-    NAME            shift and go to state 21
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for EQUALITY resolved as shift
+  ! shift/reduce conflict for NON_EQUALITY resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    SEMICOLON       reduce using rule 14 (expression -> expression OR expression .)
+    IF              reduce using rule 14 (expression -> expression OR expression .)
+    WHILE           reduce using rule 14 (expression -> expression OR expression .)
+    NAME            reduce using rule 14 (expression -> expression OR expression .)
+    LPAREN          reduce using rule 14 (expression -> expression OR expression .)
+    NUMBER          reduce using rule 14 (expression -> expression OR expression .)
+    STRING          reduce using rule 14 (expression -> expression OR expression .)
+    LACCO           reduce using rule 14 (expression -> expression OR expression .)
+    RPAREN          reduce using rule 14 (expression -> expression OR expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-    expression                     shift and go to state 42
+  ! PLUS            [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! MINUS           [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! TIMES           [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! DIVIDE          [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! EQUALITY        [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! NON_EQUALITY    [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! OR              [ reduce using rule 14 (expression -> expression OR expression .) ]
+  ! AND             [ reduce using rule 14 (expression -> expression OR expression .) ]
+
 
 state 37
 
-    (7) statement -> WHILE expression bloc .
+    (11) expression -> expression DIVIDE expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    IF              reduce using rule 7 (statement -> WHILE expression bloc .)
-    WHILE           reduce using rule 7 (statement -> WHILE expression bloc .)
-    NAME            reduce using rule 7 (statement -> WHILE expression bloc .)
-    MINUS           reduce using rule 7 (statement -> WHILE expression bloc .)
-    LPAREN          reduce using rule 7 (statement -> WHILE expression bloc .)
-    NUMBER          reduce using rule 7 (statement -> WHILE expression bloc .)
-    STRING          reduce using rule 7 (statement -> WHILE expression bloc .)
-    RACCO           reduce using rule 7 (statement -> WHILE expression bloc .)
-    $end            reduce using rule 7 (statement -> WHILE expression bloc .)
+    PLUS            reduce using rule 11 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 11 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 11 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    EQUALITY        reduce using rule 11 (expression -> expression DIVIDE expression .)
+    NON_EQUALITY    reduce using rule 11 (expression -> expression DIVIDE expression .)
+    OR              reduce using rule 11 (expression -> expression DIVIDE expression .)
+    AND             reduce using rule 11 (expression -> expression DIVIDE expression .)
+    SEMICOLON       reduce using rule 11 (expression -> expression DIVIDE expression .)
+    IF              reduce using rule 11 (expression -> expression DIVIDE expression .)
+    WHILE           reduce using rule 11 (expression -> expression DIVIDE expression .)
+    NAME            reduce using rule 11 (expression -> expression DIVIDE expression .)
+    LPAREN          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    NUMBER          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    STRING          reduce using rule 11 (expression -> expression DIVIDE expression .)
+    LACCO           reduce using rule 11 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 11 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! TIMES           [ shift and go to state 18 ]
+  ! DIVIDE          [ shift and go to state 24 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
 
 
 state 38
 
-    (8) statement -> NAME EQUALS expression . SEMICOLON
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (9) expression -> expression MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    SEMICOLON       shift and go to state 43
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    PLUS            reduce using rule 9 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 9 (expression -> expression MINUS expression .)
+    EQUALITY        reduce using rule 9 (expression -> expression MINUS expression .)
+    NON_EQUALITY    reduce using rule 9 (expression -> expression MINUS expression .)
+    OR              reduce using rule 9 (expression -> expression MINUS expression .)
+    AND             reduce using rule 9 (expression -> expression MINUS expression .)
+    SEMICOLON       reduce using rule 9 (expression -> expression MINUS expression .)
+    IF              reduce using rule 9 (expression -> expression MINUS expression .)
+    WHILE           reduce using rule 9 (expression -> expression MINUS expression .)
+    NAME            reduce using rule 9 (expression -> expression MINUS expression .)
+    LPAREN          reduce using rule 9 (expression -> expression MINUS expression .)
+    NUMBER          reduce using rule 9 (expression -> expression MINUS expression .)
+    STRING          reduce using rule 9 (expression -> expression MINUS expression .)
+    LACCO           reduce using rule 9 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 9 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+
+  ! TIMES           [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
 
 
 state 39
 
-    (5) statement -> IF expression LACCO . bloc RACCO ELSE LACCO bloc RACCO
-    (1) bloc -> . statement bloc
-    (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (12) expression -> expression EQUALITY expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for EQUALITY resolved as shift
+  ! shift/reduce conflict for NON_EQUALITY resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+    SEMICOLON       reduce using rule 12 (expression -> expression EQUALITY expression .)
+    IF              reduce using rule 12 (expression -> expression EQUALITY expression .)
+    WHILE           reduce using rule 12 (expression -> expression EQUALITY expression .)
+    NAME            reduce using rule 12 (expression -> expression EQUALITY expression .)
+    LPAREN          reduce using rule 12 (expression -> expression EQUALITY expression .)
+    NUMBER          reduce using rule 12 (expression -> expression EQUALITY expression .)
+    STRING          reduce using rule 12 (expression -> expression EQUALITY expression .)
+    LACCO           reduce using rule 12 (expression -> expression EQUALITY expression .)
+    RPAREN          reduce using rule 12 (expression -> expression EQUALITY expression .)
+    PLUS            shift and go to state 20
+    MINUS           shift and go to state 25
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+    EQUALITY        shift and go to state 26
+    NON_EQUALITY    shift and go to state 19
+    OR              shift and go to state 23
+    AND             shift and go to state 22
 
-    expression                     shift and go to state 1
-    bloc                           shift and go to state 44
-    statement                      shift and go to state 8
+  ! PLUS            [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! MINUS           [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! TIMES           [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! DIVIDE          [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! EQUALITY        [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! NON_EQUALITY    [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! OR              [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+  ! AND             [ reduce using rule 12 (expression -> expression EQUALITY expression .) ]
+
 
 state 40
 
-    (6) statement -> IF LACCO expression . RACCO bloc
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (6) statement -> NAME EQUALS expression SEMICOLON .
 
-    RACCO           shift and go to state 45
-    PLUS            shift and go to state 16
-    MINUS           shift and go to state 18
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-    EQUALITY        shift and go to state 12
-    NON_EQUALITY    shift and go to state 15
-    OR              shift and go to state 17
-    AND             shift and go to state 19
+    $end            reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    IF              reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    WHILE           reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    NAME            reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    MINUS           reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    LPAREN          reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    NUMBER          reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    STRING          reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
+    RACCO           reduce using rule 6 (statement -> NAME EQUALS expression SEMICOLON .)
 
 
 state 41
 
-    (19) expression -> LPAREN expression RPAREN .
+    (9) expression -> expression MINUS expression .
+    (16) expression -> MINUS expression .
+    (8) expression -> expression . PLUS expression
+    (9) expression -> expression . MINUS expression
+    (10) expression -> expression . TIMES expression
+    (11) expression -> expression . DIVIDE expression
+    (12) expression -> expression . EQUALITY expression
+    (13) expression -> expression . NON_EQUALITY expression
+    (14) expression -> expression . OR expression
+    (15) expression -> expression . AND expression
 
-    PLUS            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    MINUS           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    TIMES           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    DIVIDE          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    EQUALITY        reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    NON_EQUALITY    reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    OR              reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    AND             reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    SEMICOLON       reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    IF              reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    WHILE           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    NAME            reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    LPAREN          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    NUMBER          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    STRING          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    LACCO           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 19 (expression -> LPAREN expression RPAREN .)
-    RACCO           reduce using rule 19 (expression -> LPAREN expression RPAREN .)
+  ! reduce/reduce conflict for PLUS resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for MINUS resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for TIMES resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for DIVIDE resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for EQUALITY resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for NON_EQUALITY resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for OR resolved using rule 9 (expression -> expression MINUS expression .)
+  ! reduce/reduce conflict for AND resolved using rule 9 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 9 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 9 (expression -> expression MINUS expression .)
+    EQUALITY        reduce using rule 9 (expression -> expression MINUS expression .)
+    NON_EQUALITY    reduce using rule 9 (expression -> expression MINUS expression .)
+    OR              reduce using rule 9 (expression -> expression MINUS expression .)
+    AND             reduce using rule 9 (expression -> expression MINUS expression .)
+    IF              reduce using rule 9 (expression -> expression MINUS expression .)
+    WHILE           reduce using rule 9 (expression -> expression MINUS expression .)
+    NAME            reduce using rule 9 (expression -> expression MINUS expression .)
+    LPAREN          reduce using rule 9 (expression -> expression MINUS expression .)
+    NUMBER          reduce using rule 9 (expression -> expression MINUS expression .)
+    STRING          reduce using rule 9 (expression -> expression MINUS expression .)
+    SEMICOLON       reduce using rule 16 (expression -> MINUS expression .)
+    TIMES           shift and go to state 18
+    DIVIDE          shift and go to state 24
+
+  ! TIMES           [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 9 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! MINUS           [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! TIMES           [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! EQUALITY        [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! NON_EQUALITY    [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! OR              [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! AND             [ reduce using rule 16 (expression -> MINUS expression .) ]
+  ! PLUS            [ shift and go to state 20 ]
+  ! MINUS           [ shift and go to state 25 ]
+  ! EQUALITY        [ shift and go to state 26 ]
+  ! NON_EQUALITY    [ shift and go to state 19 ]
+  ! OR              [ shift and go to state 23 ]
+  ! AND             [ shift and go to state 22 ]
 
 
 state 42
 
-    (11) expression -> expression MINUS expression .
-    (18) expression -> MINUS expression .
-    (10) expression -> expression . PLUS expression
-    (11) expression -> expression . MINUS expression
-    (12) expression -> expression . TIMES expression
-    (13) expression -> expression . DIVIDE expression
-    (14) expression -> expression . EQUALITY expression
-    (15) expression -> expression . NON_EQUALITY expression
-    (16) expression -> expression . OR expression
-    (17) expression -> expression . AND expression
+    (3) statement -> IF expression LACCO bloc . RACCO ELSE LACCO bloc RACCO
+    (4) statement -> IF expression LACCO bloc . RACCO
 
-  ! reduce/reduce conflict for PLUS resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for MINUS resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for TIMES resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for DIVIDE resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for EQUALITY resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for NON_EQUALITY resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for OR resolved using rule 11 (expression -> expression MINUS expression .)
-  ! reduce/reduce conflict for AND resolved using rule 11 (expression -> expression MINUS expression .)
-    PLUS            reduce using rule 11 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 11 (expression -> expression MINUS expression .)
-    EQUALITY        reduce using rule 11 (expression -> expression MINUS expression .)
-    NON_EQUALITY    reduce using rule 11 (expression -> expression MINUS expression .)
-    OR              reduce using rule 11 (expression -> expression MINUS expression .)
-    AND             reduce using rule 11 (expression -> expression MINUS expression .)
-    IF              reduce using rule 11 (expression -> expression MINUS expression .)
-    WHILE           reduce using rule 11 (expression -> expression MINUS expression .)
-    NAME            reduce using rule 11 (expression -> expression MINUS expression .)
-    LPAREN          reduce using rule 11 (expression -> expression MINUS expression .)
-    NUMBER          reduce using rule 11 (expression -> expression MINUS expression .)
-    STRING          reduce using rule 11 (expression -> expression MINUS expression .)
-    SEMICOLON       reduce using rule 18 (expression -> MINUS expression .)
-    TIMES           shift and go to state 14
-    DIVIDE          shift and go to state 13
-
-  ! TIMES           [ reduce using rule 11 (expression -> expression MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 11 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! MINUS           [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! TIMES           [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! DIVIDE          [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! EQUALITY        [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! NON_EQUALITY    [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! OR              [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! AND             [ reduce using rule 18 (expression -> MINUS expression .) ]
-  ! PLUS            [ shift and go to state 16 ]
-  ! MINUS           [ shift and go to state 18 ]
-  ! EQUALITY        [ shift and go to state 12 ]
-  ! NON_EQUALITY    [ shift and go to state 15 ]
-  ! OR              [ shift and go to state 17 ]
-  ! AND             [ shift and go to state 19 ]
+    RACCO           shift and go to state 43
 
 
 state 43
 
-    (8) statement -> NAME EQUALS expression SEMICOLON .
+    (3) statement -> IF expression LACCO bloc RACCO . ELSE LACCO bloc RACCO
+    (4) statement -> IF expression LACCO bloc RACCO .
 
-    IF              reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    WHILE           reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    NAME            reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    MINUS           reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    LPAREN          reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    NUMBER          reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    STRING          reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    RACCO           reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
-    $end            reduce using rule 8 (statement -> NAME EQUALS expression SEMICOLON .)
+    ELSE            shift and go to state 44
+    $end            reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    IF              reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    WHILE           reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    NAME            reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    MINUS           reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    LPAREN          reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    NUMBER          reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    STRING          reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
+    RACCO           reduce using rule 4 (statement -> IF expression LACCO bloc RACCO .)
 
 
 state 44
 
-    (5) statement -> IF expression LACCO bloc . RACCO ELSE LACCO bloc RACCO
+    (3) statement -> IF expression LACCO bloc RACCO ELSE . LACCO bloc RACCO
 
-    RACCO           shift and go to state 46
+    LACCO           shift and go to state 45
 
 
 state 45
 
-    (6) statement -> IF LACCO expression RACCO . bloc
+    (3) statement -> IF expression LACCO bloc RACCO ELSE LACCO . bloc RACCO
     (1) bloc -> . statement bloc
     (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
+    (3) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
+    (4) statement -> . IF expression LACCO bloc RACCO
+    (5) statement -> . WHILE expression bloc
+    (6) statement -> . NAME EQUALS expression SEMICOLON
+    (7) statement -> . expression SEMICOLON
+    (8) expression -> . expression PLUS expression
+    (9) expression -> . expression MINUS expression
+    (10) expression -> . expression TIMES expression
+    (11) expression -> . expression DIVIDE expression
+    (12) expression -> . expression EQUALITY expression
+    (13) expression -> . expression NON_EQUALITY expression
+    (14) expression -> . expression OR expression
+    (15) expression -> . expression AND expression
+    (16) expression -> . MINUS expression
+    (17) expression -> . LPAREN expression RPAREN
+    (18) expression -> . NUMBER
+    (19) expression -> . STRING
+    (20) expression -> . NAME
 
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
+    IF              shift and go to state 6
+    WHILE           shift and go to state 4
+    NAME            shift and go to state 3
+    MINUS           shift and go to state 1
+    LPAREN          shift and go to state 7
+    NUMBER          shift and go to state 9
+    STRING          shift and go to state 2
 
-    expression                     shift and go to state 1
-    bloc                           shift and go to state 47
+    bloc                           shift and go to state 46
     statement                      shift and go to state 8
+    expression                     shift and go to state 10
 
 state 46
 
-    (5) statement -> IF expression LACCO bloc RACCO . ELSE LACCO bloc RACCO
+    (3) statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc . RACCO
 
-    ELSE            shift and go to state 48
+    RACCO           shift and go to state 47
 
 
 state 47
 
-    (6) statement -> IF LACCO expression RACCO bloc .
+    (3) statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .
 
-    IF              reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    WHILE           reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    NAME            reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    MINUS           reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    LPAREN          reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    NUMBER          reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    STRING          reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    RACCO           reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-    $end            reduce using rule 6 (statement -> IF LACCO expression RACCO bloc .)
-
-
-state 48
-
-    (5) statement -> IF expression LACCO bloc RACCO ELSE . LACCO bloc RACCO
-
-    LACCO           shift and go to state 49
-
-
-state 49
-
-    (5) statement -> IF expression LACCO bloc RACCO ELSE LACCO . bloc RACCO
-    (1) bloc -> . statement bloc
-    (2) bloc -> . statement
-    (5) statement -> . IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO
-    (6) statement -> . IF LACCO expression RACCO bloc
-    (7) statement -> . WHILE expression bloc
-    (8) statement -> . NAME EQUALS expression SEMICOLON
-    (9) statement -> . expression SEMICOLON
-    (10) expression -> . expression PLUS expression
-    (11) expression -> . expression MINUS expression
-    (12) expression -> . expression TIMES expression
-    (13) expression -> . expression DIVIDE expression
-    (14) expression -> . expression EQUALITY expression
-    (15) expression -> . expression NON_EQUALITY expression
-    (16) expression -> . expression OR expression
-    (17) expression -> . expression AND expression
-    (18) expression -> . MINUS expression
-    (19) expression -> . LPAREN expression RPAREN
-    (20) expression -> . NUMBER
-    (21) expression -> . STRING
-    (22) expression -> . NAME
-
-    IF              shift and go to state 9
-    WHILE           shift and go to state 2
-    NAME            shift and go to state 6
-    MINUS           shift and go to state 4
-    LPAREN          shift and go to state 10
-    NUMBER          shift and go to state 3
-    STRING          shift and go to state 5
-
-    expression                     shift and go to state 1
-    bloc                           shift and go to state 50
-    statement                      shift and go to state 8
-
-state 50
-
-    (5) statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc . RACCO
-
-    RACCO           shift and go to state 51
-
-
-state 51
-
-    (5) statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .
-
-    IF              reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    WHILE           reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    NAME            reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    MINUS           reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    LPAREN          reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    NUMBER          reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    STRING          reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    RACCO           reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
-    $end            reduce using rule 5 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    $end            reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    IF              reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    WHILE           reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    NAME            reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    MINUS           reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    LPAREN          reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    NUMBER          reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    STRING          reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
+    RACCO           reduce using rule 3 (statement -> IF expression LACCO bloc RACCO ELSE LACCO bloc RACCO .)
 
 WARNING: 
 WARNING: Conflicts:
@@ -1503,22 +1400,6 @@ WARNING: shift/reduce conflict for MINUS in state 8 resolved as shift
 WARNING: shift/reduce conflict for LPAREN in state 8 resolved as shift
 WARNING: shift/reduce conflict for NUMBER in state 8 resolved as shift
 WARNING: shift/reduce conflict for STRING in state 8 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 28 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 28 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 28 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 28 resolved as shift
-WARNING: shift/reduce conflict for EQUALITY in state 28 resolved as shift
-WARNING: shift/reduce conflict for NON_EQUALITY in state 28 resolved as shift
-WARNING: shift/reduce conflict for OR in state 28 resolved as shift
-WARNING: shift/reduce conflict for AND in state 28 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 31 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 31 resolved as shift
-WARNING: shift/reduce conflict for TIMES in state 31 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 31 resolved as shift
-WARNING: shift/reduce conflict for EQUALITY in state 31 resolved as shift
-WARNING: shift/reduce conflict for NON_EQUALITY in state 31 resolved as shift
-WARNING: shift/reduce conflict for OR in state 31 resolved as shift
-WARNING: shift/reduce conflict for AND in state 31 resolved as shift
 WARNING: shift/reduce conflict for PLUS in state 33 resolved as shift
 WARNING: shift/reduce conflict for MINUS in state 33 resolved as shift
 WARNING: shift/reduce conflict for TIMES in state 33 resolved as shift
@@ -1535,5 +1416,21 @@ WARNING: shift/reduce conflict for EQUALITY in state 35 resolved as shift
 WARNING: shift/reduce conflict for NON_EQUALITY in state 35 resolved as shift
 WARNING: shift/reduce conflict for OR in state 35 resolved as shift
 WARNING: shift/reduce conflict for AND in state 35 resolved as shift
-WARNING: reduce/reduce conflict in state 42 resolved using rule (expression -> expression MINUS expression)
-WARNING: rejected rule (expression -> MINUS expression) in state 42
+WARNING: shift/reduce conflict for PLUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 36 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 36 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 36 resolved as shift
+WARNING: shift/reduce conflict for EQUALITY in state 36 resolved as shift
+WARNING: shift/reduce conflict for NON_EQUALITY in state 36 resolved as shift
+WARNING: shift/reduce conflict for OR in state 36 resolved as shift
+WARNING: shift/reduce conflict for AND in state 36 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 39 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 39 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 39 resolved as shift
+WARNING: shift/reduce conflict for EQUALITY in state 39 resolved as shift
+WARNING: shift/reduce conflict for NON_EQUALITY in state 39 resolved as shift
+WARNING: shift/reduce conflict for OR in state 39 resolved as shift
+WARNING: shift/reduce conflict for AND in state 39 resolved as shift
+WARNING: reduce/reduce conflict in state 41 resolved using rule (expression -> expression MINUS expression)
+WARNING: rejected rule (expression -> MINUS expression) in state 41
