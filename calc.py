@@ -4,14 +4,15 @@
 # p[1] simple calculator with variables.
 # -----------------------------------------------------------------------------
 reserved = {
-   'if' : 'IF',
-   'else' : 'ELSE',
-   'while' : 'WHILE'
+    'if': 'IF',
+    'else': 'ELSE',
+    'while': 'WHILE'
 }
 tokens = [
-    'NAME', 'NUMBER',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
-    'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO', 'RACCO'] + list(reserved.values())
+             'NAME', 'NUMBER',
+             'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
+             'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO',
+             'RACCO'] + list(reserved.values())
 # Tokens
 t_LACCO = r"{"
 t_RACCO = r"}"
@@ -26,16 +27,17 @@ t_DIVIDE = r'/'
 t_EQUALS = r'='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_NAME = r'([a-zA-Z_][a-zA-Z0-9_]*)'
 t_SEMICOLON = ";"
 t_STRING = "'[^']*'"
 
-#t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
 
-def t_ID(t):
+# t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
+
+def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
-    t.type = reserved.get(t.value,'ID')    # Check for reserved words
+    t.type = reserved.get(t.value, 'NAME')  # Check for reserved words
     return t
+
 
 def t_NUMBER(t):
     r'\d+'
@@ -88,15 +90,17 @@ def p_IF_statement(p):
     | IF expression  LACCO bloc RACCO   '''
     print("tkt")
     if len(p) == 6:
-        p[0] = (p[1],p[2],p[4])
+        p[0] = (p[1], p[2], p[4])
     else:
         p[0] = (p[1], p[2], p[4], p[8])
 
     print(p[0])
 
+
 def p_WHILE_statement(p):
     '''statement : WHILE expression bloc'''
     p[0] = (p[1], p[2], p[3])
+
 
 def p_statement_assign(p):
     '''statement : NAME EQUALS expression SEMICOLON'''
@@ -106,7 +110,6 @@ def p_statement_assign(p):
 def p_statement_expr(p):
     '''statement : expression SEMICOLON'''
     p[0] = p[1]
-    print(p[0])
 
 
 def p_expression_binop(p):
@@ -118,66 +121,52 @@ def p_expression_binop(p):
                   | expression NON_EQUALITY expression
                   | expression OR expression
                   | expression AND expression '''
-    if p[2] == '+':
-        p[0] = ('+', p[1], p[3])
-    elif p[2] == '-':
-        p[0] = ('-', p[1], p[3])
-    elif p[2] == '*':
-        p[0] = ('*', p[1], p[3])
-    elif p[2] == '/':
-        p[0] = ('/', p[1], p[3])
-    elif p[2] == '==':
-        p[0] = ('==', p[1], p[3])
-    elif p[2] == '!=':
-        p[0] = ('!=', p[1], p[3])
-    elif p[2] == '||':
-        p[0] = ('||', p[1], p[3])
-    elif p[2] == '&&':
-        p[0] = ('&&', p[1], p[3])
+    p[0] = (p[2], p[1], p[3])
 
 
 def eval(p):
-    if p[0] == "while":
-        while type(p[1]) is tuple and eval(p[1]) or p[1]:
-            eval(p[2])
-    if p[0] == "if":
-        if type(p[1]) is tuple and eval(p[1]) or p[1] :
-            eval(p[2])
-        elif len(p) == 4:
-            eval(p[3])
-    else:
-        if p == 'empty':
-            return
-        if p[0] == 'bloc':
-            print(eval(p[1]))
-            print(eval(p[2]))
-        if type(p[2]) is tuple:
-            p = (p[0], p[1], eval(p[2]))
-        if type(p[1]) is tuple:
-            p = (p[0], eval(p[1]), p[2])
-        if p[0] == '+':
+
+        if type(p) == tuple:
+            if p == 'empty':
+                return
+            if p[0] == 'bloc':
+                print(eval(p[1]))
+                print(eval(p[2]))
+            if p[0] == "while":
+                while type(p[1]) is tuple and eval(p[1]) or p[1]:
+                    eval(p[2])
+            if p[0] == "if":
+                if type(p[1]) is tuple and eval(p[1]) or p[1]:
+                    eval(p[2])
+                elif len(p) == 4:
+                    eval(p[3])
+            if type(p[2]) is tuple:
+                p = (p[0], p[1], eval(p[2]))
+            if type(p[1]) is tuple:
+                p = (p[0], eval(p[1]), p[2])
+            if p[0] == '+':
                 return p[1] + p[2]
-        elif p[0] == '-':
-            return p[1] - p[2]
-        elif p[0] == '*':
-            return p[1] * p[2]
-        elif p[0] == '/':
-            return p[1] / p[2]
-        elif p[0] == '==':
-            return p[1] == p[2]
-        elif p[0] == '!=':
-            return p[1] != p[2]
-        elif p[0] == '=':
-            names[p[1]] = p[2]
-        elif p[0] == '||':
-            return p[1] or p[2]
-        elif p[0] == '&&':
-            return p[1] and p[2]
+            elif p[0] == '-':
+                return p[1] - p[2]
+            elif p[0] == '*':
+                return p[1] * p[2]
+            elif p[0] == '/':
+                return p[1] / p[2]
+            elif p[0] == '==':
+                return p[1] == p[2]
+            elif p[0] == '!=':
+                return p[1] != p[2]
+            elif p[0] == '=':
+                names[p[1]] = p[2]
+            elif p[0] == '||':
+                return p[1] or p[2]
+            elif p[0] == '&&':
+                return p[1] and p[2]
 
 
 def p_expression_uminus(p):
-        'expression : MINUS expression %prec UMINUS'
-        p[0] = -p[2]
+    'expression : MINUS expression %prec UMINUS'
+    p[0] = -p[2]
 
 
 def p_expression_group(p):
