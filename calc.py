@@ -6,14 +6,17 @@
 reserved = {
     'if': 'IF',
     'else': 'ELSE',
-    'while': 'WHILE'
+    'while': 'WHILE',
+    'for' : 'FOR'
 }
-tokens = [
+tokens = [  'LESSER','UPPER',
              'NAME', 'NUMBER',
              'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
              'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO',
              'RACCO'] + list(reserved.values())
 # Tokens
+t_UPPER = r'>'
+t_LESSER = r'<'
 t_LACCO = r"{"
 t_RACCO = r"}"
 t_EQUALITY = r'=='
@@ -96,10 +99,16 @@ def p_IF_statement(p):
 
     print(p[0])
 
-
+def p_FOR_statement(p):
+    '''statement : FOR statement statement statement LACCO bloc RACCO
+                |  FOR statement statement LACCO bloc RACCO'''
+    if len(p) == 8:
+        p[0] = (p[1] , p[3] ,p[4] , p[6] ,p[2])
+    else :
+        p[0] = (p[1] ,p[2], p[3], p[5])
 def p_WHILE_statement(p):
-    '''statement : WHILE expression bloc'''
-    p[0] = (p[1], p[2], p[3])
+    '''statement : WHILE expression  LACCO bloc RACCO '''
+    p[0] = (p[1], p[2], p[4])
 
 
 def p_statement_assign(p):
@@ -121,7 +130,10 @@ def p_expression_binop(p):
                   | expression EQUALITY expression
                   | expression NON_EQUALITY expression
                   | expression OR expression
-                  | expression AND expression '''
+                  | expression AND expression
+                  | expression UPPER expression
+                  | expression LESSER expression'''
+
     p[0] = (p[2], p[1], p[3])
     print(p[0])
 
@@ -133,13 +145,19 @@ def eval(p):
                 eval(p[1])
                 eval(p[2])
             if p[0] == "while":
-                while type(p[1]) is tuple and eval(p[1]) or p[1]:
+                while type(p[1]) is tuple and eval(p[1]):
                     eval(p[2])
             if p[0] == "if":
-                if type(p[1]) is tuple and eval(p[1]) or p[1]:
-                    eval(p[2])
+                if type(p[1]) is tuple and eval(p[1]):
+                    print(eval(p[2]))
                 elif len(p) == 4:
                     eval(p[3])
+            if p[0] == "for":
+                if len(p) == 5:
+                    eval(p[4])
+                while eval(p[1]):
+                    print(eval(p[3]))
+                    eval(p[2])
             if p[0] == '+':
                 return eval(p[1]) + eval(p[2])
             elif p[0] == '-':
@@ -160,6 +178,10 @@ def eval(p):
                 return eval(p[1]) and eval(p[2])
             elif p[0] == 'var':
                 return names[p[1]]
+            elif p[0] == "<":
+                return eval(p[1]) < eval(p[2])
+            elif p[0] == ">":
+                return eval(p[1]) > eval(p[2])
         else:
             return p
 
