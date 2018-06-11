@@ -7,13 +7,16 @@ reserved = {
     'if': 'IF',
     'else': 'ELSE',
     'while': 'WHILE',
-    'for' : 'FOR'
+    'for' : 'FOR',
+    'def' : 'DEF',
+    'break' : 'BREAK',
+    'return' : 'RETURN'
 }
 tokens = [  'LESSER','UPPER',
              'NAME', 'NUMBER',
              'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
              'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO',
-             'RACCO'] + list(reserved.values())
+             'RACCO','COMA'] + list(reserved.values())
 # Tokens
 t_UPPER = r'>'
 t_LESSER = r'<'
@@ -31,6 +34,7 @@ t_EQUALS = r'='
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_SEMICOLON = ";"
+t_COMA = ','
 ###t_STRING = "'[^']*'"
 
 
@@ -76,7 +80,7 @@ precedence = (
 
 # dictionary of names (for storing variables)
 names = {}
-
+function = {}
 
 def p_bloc(p):
     '''bloc : bloc statement
@@ -105,7 +109,7 @@ def p_FOR_statement(p):
     if len(p) == 8:
         p[0] = (p[1] , p[3] ,p[4] , p[6] ,p[2])
     else :
-        p[0] = (p[1] ,p[2], p[3], p[5])
+        p[0] = (p[1],p[2], p[3], p[5])
 def p_WHILE_statement(p):
     '''statement : WHILE expression  LACCO bloc RACCO '''
     p[0] = (p[1], p[2], p[4])
@@ -137,6 +141,14 @@ def p_expression_binop(p):
     p[0] = (p[2], p[1], p[3])
     print(p[0])
 
+def p_function(p):
+    '''statement : DEF NAME LPAREN arglist RPAREN LACCO bloc RACCO
+                  | DEF NAME LPAREN RPAREN LACCO bloc RACCO'''
+    if len(p) == 9:
+        p[0] = (p[1],p[2],p[4],p[7])
+    else:
+        p[0] = (p[1],p[2],p[6])
+
 def eval(p):
         if type(p) == tuple:
             if p == 'empty':
@@ -158,6 +170,13 @@ def eval(p):
                 while eval(p[1]):
                     print(eval(p[3]))
                     eval(p[2])
+            if p[0] == "arglist":
+                return eval(p[1])+","+eval(p[2])
+            if p[0] == "def":
+                if len(p) == 4:
+                   function[p[1]] =(eval(p[2]).split(","),p[3])
+                else:
+                    function[p[1]] = (p[2])
             if p[0] == '+':
                 return eval(p[1]) + eval(p[2])
             elif p[0] == '-':
@@ -184,7 +203,6 @@ def eval(p):
                 return eval(p[1]) > eval(p[2])
         else:
             return p
-
 def p_expression_uminus(p):
     'expression : MINUS expression %prec UMINUS'
     p[0] = -p[2]
@@ -200,16 +218,22 @@ def p_expression_number(p):
     p[0] = p[1]
 
 
-###def p_expression_string(p):
-###    'expression : STRING'
-###    p[0] = p[1]
+def p_expression_string(p):
+    'expression : STRING'
+    p[0] = p[1]
 
 
 def p_expression_name(p):
     'expression : NAME'
     p[0] = ('var',p[1])
 
-
+def p_arg_list(p):
+    '''arglist : arglist COMA NAME
+                | NAME'''
+    if len(p) == 4:
+        p[0] = ('arglist', p[1], p[3])
+    else:
+        p[0] = ('arglist', p[1], 'empty')
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
 
