@@ -1,3 +1,5 @@
-def bendo(alo,aled,aluil){
-5+8;
+if(1==2){
+4+7;
+}else{
+10+10;
 }
