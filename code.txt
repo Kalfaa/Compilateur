@@ -1,5 +1,6 @@
-if(1==2){
-4+7;
-}else{
-10+10;
+def bendo(a,b){
+return a+b;
+print(20+20);
 }
+
+print(bendo(7,8));
