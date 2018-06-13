@@ -153,7 +153,7 @@ def p_def_function(p):
     '''statement : DEF NAME LPAREN arglist RPAREN LACCO bloc RACCO
                   | DEF NAME LPAREN RPAREN LACCO bloc RACCO'''
     if len(p) == 9:
-        p[0] = (p[1],p[2],p[4],p[7])
+        p[0] = (p[1],p[2],p[7],p[4])
     else:
         p[0] = (p[1],p[2],p[6])
 
@@ -180,22 +180,25 @@ def eval(p):
                eval(p[1])
                eval(p[2])
             if p[0] == 'exec':
+
+
+
                 if len(p) ==3:
-                    name_list = function[p[1]][0]
-                    function_bloc = function[p[1]][1]
+                    name_list = function[p[1]][1]
                     value = eval(p[2])
                     i=0
                     names['!' + p[1]] = {}
                     if(len(value)>len(name_list)):
                         raise "TO MUCH ARGUMENT"
                     for i in range(len(name_list)):
-
                         names['!'+p[1]][name_list[i]] = value[i]
-                    temp = function_scope
-                    function_scope = [1, p[1]]
-                    result = eval(function_bloc)
-                    function_scope = temp
-                    return result
+                else:
+                    function_bloc = function[p[1]]
+                temp = function_scope
+                function_scope = [1, p[1]]
+                result = eval(function_bloc)
+                function_scope = temp
+                return result
             if p[0] == "while":
                 while type(p[1]) is tuple and eval(p[1]):
                     eval(p[2])
@@ -224,10 +227,10 @@ def eval(p):
             if p[0] == "def":
                 if len(p) == 4:
                     list_arg = eval(p[2])
-                    function[p[1]] =(list_arg.split(","),p[3])
+                    function[p[1]] =(p[3],list_arg.split(","))
                     return 'empty'
                 else:
-                    function[p[1]] = (p[2])
+                    function[p[1]] = p[2]
             if p[0] == '+':
                 return eval(p[1]) + eval(p[2])
             elif p[0] == '-':
@@ -259,10 +262,13 @@ def eval(p):
                 return eval(p[1]) > eval(p[2])
             elif bool_return[0] == 1:
                 bool_return[0] ==0
-                value = bool_return[1]
+                return_value = bool_return[1]
                 bool_return[1] ==0
-                return value
+                return return_value
         else:
+            if p == 'return' :
+                bool_return[0] = 1
+                return
             return p
 
 
