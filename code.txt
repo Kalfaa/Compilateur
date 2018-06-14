@@ -1,6 +1,6 @@
 def bendo(a,b){
-return a+b;
-print(20+20);
+print(a+b);
+return 5;
 }
 
-print(bendo(7,8));
+print(bendo(10,11));

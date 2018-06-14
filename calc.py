@@ -167,6 +167,7 @@ def p_exec_function(p):
 
 def eval(p):
         global function_scope
+        global function_bloc
         if type(p) == tuple:
             if bool_return[0] == 1:
                 return bool_return[1]
@@ -180,9 +181,6 @@ def eval(p):
                eval(p[1])
                eval(p[2])
             if p[0] == 'exec':
-
-
-
                 if len(p) ==3:
                     name_list = function[p[1]][1]
                     value = eval(p[2])
@@ -192,8 +190,8 @@ def eval(p):
                         raise "TO MUCH ARGUMENT"
                     for i in range(len(name_list)):
                         names['!'+p[1]][name_list[i]] = value[i]
-                else:
-                    function_bloc = function[p[1]]
+
+                function_bloc = function[p[1]][0]
                 temp = function_scope
                 function_scope = [1, p[1]]
                 result = eval(function_bloc)
@@ -226,11 +224,11 @@ def eval(p):
                 return eval(p[1])+[eval(p[2])]
             if p[0] == "def":
                 if len(p) == 4:
-                    list_arg = eval(p[2])
-                    function[p[1]] =(p[3],list_arg.split(","))
+                    list_arg = eval(p[3])
+                    function[p[1]] =(p[2],list_arg.split(","))
                     return 'empty'
                 else:
-                    function[p[1]] = p[2]
+                    function[p[1]][0] = p[2]
             if p[0] == '+':
                 return eval(p[1]) + eval(p[2])
             elif p[0] == '-':
