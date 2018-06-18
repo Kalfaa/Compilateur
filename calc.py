@@ -3,6 +3,10 @@
 #
 # p[1] simple calculator with variables.
 # -----------------------------------------------------------------------------
+
+import uuid
+import graphviz as gv
+
 reserved = {
     'if': 'IF',
     'else': 'ELSE',
@@ -97,7 +101,6 @@ def p_bloc(p):
         p[0] = ('bloc', p[1], p[2])
     else:
         p[0] = ('bloc', p[1], 'empty')
-    ##eval(p[0])
 
 
 def p_IF_statement(p):
@@ -167,6 +170,7 @@ def p_exec_function(p):
 def eval(p):
         global function_scope
         global function_bloc
+        global bool_return
         if type(p) == tuple:
             if bool_return[0] == 1:
                 return bool_return[1]
@@ -193,9 +197,12 @@ def eval(p):
                 function_bloc = function[p[1]][0]
                 temp = function_scope
                 function_scope = [1, p[1]]
-                result = eval(function_bloc)
+                eval(function_bloc)
                 function_scope = temp
-                return result
+                bool_return[0] = 0
+                return_value = bool_return[1]
+                bool_return[1] = None
+                return return_value
             if p[0] == "while":
                 while type(p[1]) is tuple and eval(p[1]):
                     eval(p[2])
@@ -257,11 +264,6 @@ def eval(p):
                 return eval(p[1]) < eval(p[2])
             elif p[0] == ">":
                 return eval(p[1]) > eval(p[2])
-            elif bool_return[0] == 1:
-                bool_return[0] ==0
-                return_value = bool_return[1]
-                bool_return[1] ==0
-                return return_value
         else:
             if p == 'return' :
                 bool_return[0] = 1
