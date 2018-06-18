@@ -3,6 +3,10 @@
 #
 # p[1] simple calculator with variables.
 # -----------------------------------------------------------------------------
+
+import graphviz as gv
+import uuid
+
 reserved = {
     'if': 'IF',
     'else': 'ELSE',
@@ -41,6 +45,27 @@ t_EOF = '<<<EOF>>>'
 
 
 # t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
+
+def printTreeGraph(t):
+    graph = gv.Digraph(format='pdf')
+    graph.attr('node', shape='circle')
+    addNode(graph, t)
+    #graph.render(filename='img/graph') #Pour Sauvegarder
+    graph.view() #Pour afficher
+
+def addNode(graph, t):
+    myId = uuid.uuid4()
+
+    if type(t) != tuple:
+        graph.node(str(myId), label=str(t))
+        return myId
+
+    graph.node(str(myId), label=str(t[0]))
+    graph.edge(str(myId), str(addNode(graph, t[1])), arrowsize='0')
+    if len(t) > 2:
+        graph.edge(str(myId), str(addNode(graph, t[2])), arrowsize='0')
+
+    return myId
 
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -89,6 +114,7 @@ def p_master(p):
     '''master : bloc'''
     print(p[1])
     eval(p[1])
+    printTreeGraph(p[1])
 
 def p_bloc(p):
     '''bloc :  statement bloc
@@ -98,7 +124,6 @@ def p_bloc(p):
         p[0] = ('bloc', p[1], p[2])
     else:
         p[0] = ('bloc', p[1], 'empty')
-    ##eval(p[0])
 
 
 def p_IF_statement(p):
