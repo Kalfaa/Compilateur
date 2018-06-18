@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e85f67ee-afd6-42ab-b220-fa72e7463300" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Compilateur.iml" afterPath="$PROJECT_DIR$/.idea/Compilateur.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="e85f67ee-afd6-42ab-b220-fa72e7463300" name="Default" comment="Fix fonction sans argument">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/built-in/print" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calc.py" afterPath="$PROJECT_DIR$/calc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code.txt" afterPath="$PROJECT_DIR$/code.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parser.out" afterPath="$PROJECT_DIR$/parser.out" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parsetab.py" afterPath="$PROJECT_DIR$/parsetab.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +21,7 @@
     <SUITE FILE_PATH="coverage/Compilateur$calc.coverage" NAME="calc Coverage Results" MODIFIED="1527527730272" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="C:\Users\Kalfa\Desktop\Compilateur" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -43,21 +41,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="calc.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/calc.py">
+      <file leaf-file-name="code.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/code.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-85">
-              <caret line="138" column="62" selection-start-line="138" selection-start-column="62" selection-end-line="138" selection-end-column="62" />
+            <state relative-caret-position="68">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="code.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/code.txt">
+      <file leaf-file-name="calc.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/calc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3050">
+              <caret line="229" column="20" selection-start-line="229" selection-start-column="20" selection-end-line="229" selection-end-column="48" />
+              <folding>
+                <element signature="e#2093#2325#0" expanded="false" />
+                <element signature="e#2631#2714#0" expanded="false" />
+                <element signature="e#2875#2929#0" expanded="false" />
+                <element signature="e#2963#3494#0" expanded="false" />
+                <element signature="e#7734#7795#0" expanded="false" />
+                <element signature="e#7829#7884#0" expanded="false" />
+                <element signature="e#8334#8500#0" expanded="false" />
+                <element signature="e#8532#8734#0" expanded="false" />
+                <element signature="e#8756#8795#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="print" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/built-in/print">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -86,8 +104,8 @@
       <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Lib/codecs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5389">
-              <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+            <state relative-caret-position="5202">
+              <caret line="306" column="0" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -96,8 +114,8 @@
       <file leaf-file-name="parser.out" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.out">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24327">
-              <caret line="1431" column="0" selection-start-line="1431" selection-start-column="0" selection-end-line="1431" selection-end-column="0" />
+            <state relative-caret-position="363">
+              <caret line="2695" column="0" selection-start-line="2695" selection-start-column="0" selection-end-line="2695" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -108,7 +126,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-              <folding />
+              <folding>
+                <marker date="1529005069200" expanded="true" signature="11477:11480" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,7 +136,7 @@
       <file leaf-file-name="yacc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/yacc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18938">
+            <state relative-caret-position="17">
               <caret line="1119" column="0" selection-start-line="1119" selection-start-column="0" selection-end-line="1119" selection-end-column="0" />
               <folding />
             </state>
@@ -124,6 +144,13 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -139,6 +166,8 @@
         <option value="$PROJECT_DIR$/main" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/parsetab.py" />
+        <option value="$PROJECT_DIR$/blabla.py" />
+        <option value="$PROJECT_DIR$/built-in/print" />
         <option value="$PROJECT_DIR$/code.txt" />
         <option value="$PROJECT_DIR$/calc.py" />
       </list>
@@ -151,10 +180,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1376" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -181,6 +210,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -202,7 +232,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -214,6 +243,10 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\theo9\PycharmProjects\Compilateur" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Kalfa\Desktop\Compilateur\built-in" />
+      <recent name="C:\Users\Kalfa\Desktop\Compilateur" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -479,7 +512,56 @@
       <option name="project" value="LOCAL" />
       <updated>1528503788137</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="SA MARCHEEE">
+      <created>1528584987645</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528584987645</updated>
+    </task>
+    <task id="LOCAL-00007" summary="For marche presque">
+      <created>1528595626153</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1528595626153</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Declaration des fonctions">
+      <created>1528754905706</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1528754905706</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Changement du placement de l'eval">
+      <created>1528765346868</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1528765346868</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Ajout :&#10;utilisation des fonctions avec argument + return">
+      <created>1528929609740</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1528929609740</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Ajout :&#10;utilisation des fonctions sans arguments">
+      <created>1528931695153</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1528931695153</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Ajout :&#10;utilisation des fonctions sans arguments">
+      <created>1528935533341</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1528935533341</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -492,19 +574,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1376" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27502635" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30444205" sideWeight="0.6090622" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.49367756" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49789253" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30444205" sideWeight="0.39093783" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39013454" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.49578503" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30444205" sideWeight="0.6217071" order="11" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.4873551" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.4915701" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30441898" sideWeight="0.37829295" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29685807" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29623568" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40953413" sideWeight="0.39199156" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4140753" sideWeight="0.3809273" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -576,56 +658,118 @@
     <MESSAGE value="Ajout des IF avec une instruction" />
     <MESSAGE value="Pas stable du tout" />
     <MESSAGE value="SA MARCHEEE" />
-    <option name="LAST_COMMIT_MESSAGE" value="SA MARCHEEE" />
+    <MESSAGE value="For marche presque" />
+    <MESSAGE value="Declaration des fonctions" />
+    <MESSAGE value="Changement du placement de l'eval" />
+    <MESSAGE value="Ajout :&#10;utilisation des fonctions avec argument + return" />
+    <MESSAGE value="Ajout :&#10;utilisation des fonctions sans arguments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout :&#10;utilisation des fonctions sans arguments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>191</line>
-          <option name="timeStamp" value="53" />
+          <line>295</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>82</line>
-          <option name="timeStamp" value="55" />
+          <line>225</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="56" />
+          <line>226</line>
+          <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>111</line>
-          <option name="timeStamp" value="59" />
+          <line>228</line>
+          <option name="timeStamp" value="216" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>127</line>
-          <option name="timeStamp" value="60" />
+          <line>195</line>
+          <option name="timeStamp" value="224" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>160</line>
-          <option name="timeStamp" value="61" />
+          <line>155</line>
+          <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>104</line>
-          <option name="timeStamp" value="62" />
+          <line>153</line>
+          <option name="timeStamp" value="228" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/calc.py</url>
-          <line>142</line>
-          <option name="timeStamp" value="64" />
+          <line>223</line>
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>126</line>
+          <option name="timeStamp" value="230" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>260</line>
+          <option name="timeStamp" value="231" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>288</line>
+          <option name="timeStamp" value="232" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>182</line>
+          <option name="timeStamp" value="239" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>187</line>
+          <option name="timeStamp" value="240" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>189</line>
+          <option name="timeStamp" value="242" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>192</line>
+          <option name="timeStamp" value="243" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>229</line>
+          <option name="timeStamp" value="244" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/calc.py</url>
+          <line>161</line>
+          <option name="timeStamp" value="245" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="65" />
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+      <option name="time" value="246" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -638,10 +782,46 @@
         <watch expression="p.slice" />
         <watch expression="__py_debug_temp_var_1667952767" />
         <watch expression="__py_debug_temp_var_1535434661" />
+        <watch expression="p.slice[4]" />
+        <watch expression="p.slice[1]" />
+        <watch expression="names" language="Python" />
+        <watch expression="p.slice[0]" />
+        <watch expression="p.slice[1]" />
+        <watch expression="p.slice" />
+        <watch expression="p" />
+        <watch expression="p" />
+        <watch expression="p.stack" />
+        <watch expression="bool_return" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/yacc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19040">
+          <caret line="1120" column="0" selection-start-line="1120" selection-start-column="0" selection-end-line="1120" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/calc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/parser.out">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -670,39 +850,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parser.out">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/lex.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15436">
-          <caret line="908" column="0" selection-start-line="908" selection-start-column="0" selection-end-line="908" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/yacc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19040">
-          <caret line="1120" column="0" selection-start-line="1120" selection-start-column="0" selection-end-line="1120" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/calc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -734,7 +892,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -750,7 +918,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,7 +944,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -805,7 +993,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -836,7 +1034,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -867,7 +1075,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -891,7 +1109,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -914,7 +1142,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -930,14 +1168,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parsetab.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/blabla.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/lex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5848">
@@ -946,33 +1177,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parser.out">
+    <entry file="file://$PROJECT_DIR$/built-in/print">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24327">
-          <caret line="1431" column="0" selection-start-line="1431" selection-start-column="0" selection-end-line="1431" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5389">
-          <caret line="317" column="0" selection-start-line="317" selection-start-column="0" selection-end-line="317" selection-end-column="0" />
+        <state relative-caret-position="5202">
+          <caret line="306" column="0" selection-start-line="306" selection-start-column="0" selection-end-line="306" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parsetab.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="48" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+          <folding>
+            <marker date="1529005069200" expanded="true" signature="11477:11480" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="2695" column="0" selection-start-line="2695" selection-start-column="0" selection-end-line="2695" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/code.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/ply/yacc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18938">
+        <state relative-caret-position="17">
           <caret line="1119" column="0" selection-start-line="1119" selection-start-column="0" selection-end-line="1119" selection-end-column="0" />
           <folding />
         </state>
@@ -980,9 +1229,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/calc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="138" column="62" selection-start-line="138" selection-start-column="62" selection-end-line="138" selection-end-column="62" />
-          <folding />
+        <state relative-caret-position="3050">
+          <caret line="229" column="20" selection-start-line="229" selection-start-column="20" selection-end-line="229" selection-end-column="48" />
+          <folding>
+            <element signature="e#2093#2325#0" expanded="false" />
+            <element signature="e#2631#2714#0" expanded="false" />
+            <element signature="e#2875#2929#0" expanded="false" />
+            <element signature="e#2963#3494#0" expanded="false" />
+            <element signature="e#7734#7795#0" expanded="false" />
+            <element signature="e#7829#7884#0" expanded="false" />
+            <element signature="e#8334#8500#0" expanded="false" />
+            <element signature="e#8532#8734#0" expanded="false" />
+            <element signature="e#8756#8795#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

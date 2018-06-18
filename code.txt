@@ -1,6 +1,5 @@
-def bendo(a,b){
-print(a+b);
-return 5;
+def tamer(){
+print(7);
 }
 
-print(bendo(10,11));
+tamer();

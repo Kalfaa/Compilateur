@@ -17,7 +17,7 @@ tokens = [  'LESSER','UPPER',
              'NAME', 'NUMBER',
              'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'EQUALS',
              'LPAREN', 'RPAREN', 'SEMICOLON', 'EQUALITY', 'NON_EQUALITY', "AND", "OR", "STRING", 'LACCO',
-             'RACCO','COMA','EOF'] + list(reserved.values())
+             'RACCO','COMA','QUOTE'] + list(reserved.values())
 # Tokens
 t_UPPER = r'>'
 t_LESSER = r'<'
@@ -36,9 +36,8 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_SEMICOLON = ";"
 t_COMA = ','
-t_EOF = '<<<EOF>>>'
-###t_STRING = "'[^']*'"
-
+t_QUOTE ='\"'
+t_STRING=r'oo'
 
 # t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
 
@@ -204,14 +203,14 @@ def eval(p):
                 print(eval(p[1]))
             if p[0] == "if":
                 if type(p[1]) is tuple and eval(p[1]):
-                    print(eval(p[2]))
+                    eval(p[2])
                 elif len(p) == 4:
                     eval(p[3])
             if p[0] == "for":
                 if len(p) == 5:
                     eval(p[4])
                 while eval(p[1]):
-                    print(eval(p[3]))
+                    eval(p[3])
                     eval(p[2])
             if p[0] == "arglist":
                 if (p[2] == 'empty'):
@@ -228,7 +227,7 @@ def eval(p):
                     function[p[1]] =(p[2],list_arg.split(","))
                     return 'empty'
                 else:
-                    function[p[1]][0] = p[2]
+                    function[p[1]] = (p[2],None)
             if p[0] == '+':
                 return eval(p[1]) + eval(p[2])
             elif p[0] == '-':
@@ -286,8 +285,8 @@ def p_expression_number(p):
 
 
 def p_expression_string(p):
-    'expression : STRING'
-    p[0] = p[1]
+    '''expression : QUOTE STRING QUOTE'''
+    p[0] = p[2]
 
 
 def p_expression_name(p):
