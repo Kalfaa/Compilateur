@@ -4,8 +4,8 @@
 # p[1] simple calculator with variables.
 # -----------------------------------------------------------------------------
 
-import graphviz as gv
 import uuid
+import graphviz as gv
 
 reserved = {
     'if': 'IF',
@@ -45,27 +45,6 @@ t_EOF = '<<<EOF>>>'
 
 
 # t_NAME = r'((?!(if))([a-zA-Z_][a-zA-Z0-9_]*))'
-
-def printTreeGraph(t):
-    graph = gv.Digraph(format='pdf')
-    graph.attr('node', shape='circle')
-    addNode(graph, t)
-    #graph.render(filename='img/graph') #Pour Sauvegarder
-    graph.view() #Pour afficher
-
-def addNode(graph, t):
-    myId = uuid.uuid4()
-
-    if type(t) != tuple:
-        graph.node(str(myId), label=str(t))
-        return myId
-
-    graph.node(str(myId), label=str(t[0]))
-    graph.edge(str(myId), str(addNode(graph, t[1])), arrowsize='0')
-    if len(t) > 2:
-        graph.edge(str(myId), str(addNode(graph, t[2])), arrowsize='0')
-
-    return myId
 
 def t_NAME(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -114,7 +93,6 @@ def p_master(p):
     '''master : bloc'''
     print(p[1])
     eval(p[1])
-    printTreeGraph(p[1])
 
 def p_bloc(p):
     '''bloc :  statement bloc
@@ -193,6 +171,7 @@ def p_exec_function(p):
 def eval(p):
         global function_scope
         global function_bloc
+        global bool_return
         if type(p) == tuple:
             if bool_return[0] == 1:
                 return bool_return[1]
@@ -219,9 +198,12 @@ def eval(p):
                 function_bloc = function[p[1]][0]
                 temp = function_scope
                 function_scope = [1, p[1]]
-                result = eval(function_bloc)
+                eval(function_bloc)
                 function_scope = temp
-                return result
+                bool_return[0] = 0
+                return_value = bool_return[1]
+                bool_return[1] = None
+                return return_value
             if p[0] == "while":
                 while type(p[1]) is tuple and eval(p[1]):
                     eval(p[2])
@@ -283,11 +265,6 @@ def eval(p):
                 return eval(p[1]) < eval(p[2])
             elif p[0] == ">":
                 return eval(p[1]) > eval(p[2])
-            elif bool_return[0] == 1:
-                bool_return[0] ==0
-                return_value = bool_return[1]
-                bool_return[1] ==0
-                return return_value
         else:
             if p == 'return' :
                 bool_return[0] = 1
