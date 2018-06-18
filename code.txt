@@ -1,13 +1,5 @@
-def bendo(a,b){
-print(a+b);
-return 5;
+def tamer(){
+print(5);
 }
 
-def caca(a){
-print(a);
-}
-
-caca(89);
-print(2);
-print(bendo(10,11));
-print(4);
+tamer();
