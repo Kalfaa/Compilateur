@@ -88,10 +88,33 @@ names = {}
 function = {}
 bool_return = [0,None]
 function_scope = [0,None]
+
+def printTreeGraph(t):
+    graph = gv.Digraph(format='pdf')
+    graph.attr('node', shape='circle')
+    addNode(graph, t)
+    #graph.render(filename='img/graph') #Pour Sauvegarder
+    graph.view() #Pour afficher
+
+def addNode(graph, t):
+    myId = uuid.uuid4()
+
+    if type(t) != tuple:
+        graph.node(str(myId), label=str(t))
+        return myId
+
+    graph.node(str(myId), label=str(t[0]))
+    graph.edge(str(myId), str(addNode(graph, t[1])), arrowsize='0')
+    if len(t) > 2:
+        graph.edge(str(myId), str(addNode(graph, t[2])), arrowsize='0')
+
+    return myId
+
 def p_master(p):
     '''master : bloc'''
     print(p[1])
     eval(p[1])
+    printTreeGraph(p[1])
 
 def p_bloc(p):
     '''bloc :  statement bloc
@@ -248,7 +271,10 @@ def eval(p):
             elif p[0] == '!=':
                 return eval(p[1]) != eval(p[2])
             elif p[0] == '=':
-                names[p[1]] = eval(p[2])
+                if function_scope[0] == 1:
+                    names['!' + function_scope[1]][p[1]] = eval(p[2])
+                else:
+                    names[p[1]] = eval(p[2])
             elif p[0] == '||':
                 return eval(p[1]) or eval(p[2])
             elif p[0] == '&&':
@@ -330,7 +356,7 @@ import ply.yacc as yacc
 yacc.yacc()
 
 
-with open("code.txt")as f:
+with open("code2")as f:
     s = f.read()  # use input() on Python 3
 
 yacc.parse(s)

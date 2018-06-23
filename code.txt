@@ -1,5 +1,73 @@
-def tamer(){
-print(5);
+def bendo(a,b){
+print(a+b);
+return 5;
 }
 
-tamer();
+def pouet(a){
+print(a);
+return 8/9*5+a;
+}
+
+def insidefunction(){
+    print(pouet(2));
+    print(bendo(2,2));
+}
+
+def creditAccount(ac,added){
+    accountLimit = 10000;
+    ac = ac + added;
+    if(ac>accountLimit){
+        ac = accountLimit;
+    }
+    return ac;
+}
+
+def simulation(ac,typeAccount){
+    if(typeAccount == 1){
+        ac = ac+ac/100*5;
+    }else{
+        ac = ac+ac/100*2;
+    }
+    return ac;
+}
+
+def debitAccount(ac,subbed){
+    if((ac-subbed) < 0){
+        return 0;
+    }else{
+        return ac-subbed;
+    }
+}
+
+
+
+account = 1000;
+
+
+print(pouet(89));
+print(2);
+print(bendo(10,11));
+print(4);
+
+k=0;
+
+while(k < 5){
+    bendo(1,2);
+    if( k == 3 ){
+        pouet(2);
+    }
+    k = k + 1;
+}
+
+
+for i=0;i<10;i=i+1; {
+    print(i*i);
+}
+
+insidefunction();
+
+print(88888888888888888888888888888888888888);
+
+account = creditAccount(account,1500);
+print(account);
+print(simulation(account,0));
